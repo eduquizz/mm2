@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated mm2 -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="mm2.presentation.Mm2ModelWizardID"
+            name="%_UI_Mm2ModelWizard_label"
+            class="mm2.presentation.Mm2ModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Mm2ModelFile.gif">
+         <description>%_UI_Mm2ModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated mm2 -->
+      <editor
+            id="mm2.presentation.Mm2EditorID"
+            name="%_UI_Mm2Editor_label"
+            icon="icons/full/obj16/Mm2ModelFile.gif"
+            extensions="mm2"
+            class="mm2.presentation.Mm2Editor"
+            contributorClass="mm2.presentation.Mm2ActionBarContributor">
+      </editor>
+   </extension>
+</plugin>

@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/mm2/src-gen" creationIcons="false" editDirectory="/mm2.edit/src-gen"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/mm2/src-gen" creationIcons="false" editDirectory="/mm2.edit/src-gen"
     editorDirectory="/mm2.editor/src-gen" modelPluginID="mm2" modelName="Mm2" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0"
     copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>mm2.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
-  <genPackages prefix="Mm2" disposableProviderFactory="true" ecorePackage="mm2.ecore#/"/>
+  <genPackages prefix="Mm2" disposableProviderFactory="true" ecorePackage="mm2.ecore#/">
+    <genClasses ecoreClass="mm2.ecore#//Questionnaire">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//Questionnaire/page"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/resultat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/nom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/retourAutorise"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/melange"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mm2.ecore#//Page">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Page/titre"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mm2.ecore#//Bouton"/>
+    <genClasses image="false" ecoreClass="mm2.ecore#//Navigable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//Navigable/pageSuivante"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//Navigable/pagePrecedente"/>
+    </genClasses>
+    <genClasses ecoreClass="mm2.ecore#//PageQuestion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageQuestion/boutonSuivant"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageQuestion/boutonRetour"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//PageQuestion/question"/>
+    </genClasses>
+    <genClasses ecoreClass="mm2.ecore#//PageSoumission">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/boutonSoumettre"/>
+    </genClasses>
+    <genClasses ecoreClass="mm2.ecore#//PageResultat">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//PageResultat/resultat"/>
+    </genClasses>
+    <genClasses ecoreClass="mm2.ecore#//Question">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//Question/reponse"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Question/ennonce"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Question/difficulte"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Question/reponsesMultiples"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//Question/etiquette"/>
+    </genClasses>
+    <genClasses ecoreClass="mm2.ecore#//Reponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Reponse/texte"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Reponse/estVraie"/>
+    </genClasses>
+    <genClasses ecoreClass="mm2.ecore#//BoutonSoumettre"/>
+    <genClasses ecoreClass="mm2.ecore#//BoutonSuivant"/>
+    <genClasses ecoreClass="mm2.ecore#//BoutonRetour"/>
+    <genClasses ecoreClass="mm2.ecore#//Etiquette">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Etiquette/nom"/>
+    </genClasses>
+  </genPackages>
 </genmodel:GenModel>

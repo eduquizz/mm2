@@ -2,55 +2,57 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mm2" nsURI="http://www.example.org/mm2" nsPrefix="mm2">
   <eClassifiers xsi:type="ecore:EClass" name="Questionnaire">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="questionpage" upperBound="-1"
-        eType="#//QuestionPage" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resultpage" upperBound="-1"
-        eType="#//ResultPage" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="page" upperBound="-1" eType="#//Page"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="score" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
-        defaultValueLiteral="0"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canGoBack" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="page" lowerBound="1" upperBound="-1"
+        eType="#//Page" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="0.0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retourAutorise" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isShuffle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="melange" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Page" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Button" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isVisible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Bouton" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Navigable" abstract="true" interface="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//Navigable"
-        eOpposite="#//Navigable/prev"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="prev" eType="#//Navigable"
-        eOpposite="#//Navigable/next"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pageSuivante" eType="#//Navigable"
+        eOpposite="#//Navigable/pagePrecedente"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pagePrecedente" eType="#//Navigable"
+        eOpposite="#//Navigable/pageSuivante"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="QuestionPage" eSuperTypes="#//Navigable #//Page">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="next" upperBound="-1" eType="#//NextButton"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="back" upperBound="-1" eType="#//BackButton"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="question" upperBound="-1"
-        eType="#//Question" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PageQuestion" eSuperTypes="#//Navigable #//Page">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boutonSuivant" lowerBound="1"
+        eType="#//BoutonSuivant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boutonRetour" eType="#//BoutonRetour"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="question" lowerBound="1"
+        eType="#//Question"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SubmitPage" eSuperTypes="#//Navigable #//Page">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="submit" upperBound="-1"
-        eType="#//SubmitButton" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PageSoumission" eSuperTypes="#//Navigable #//Page">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boutonSoumettre" lowerBound="1"
+        eType="#//BoutonSoumettre"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResultPage" eSuperTypes="#//Page"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PageResultat" eSuperTypes="#//Page">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Question">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="response" upperBound="-1"
-        eType="#//Response" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reponse" lowerBound="2"
+        upperBound="-1" eType="#//Reponse" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ennonce" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="difficulte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reponsesMultiples" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="etiquette" upperBound="-1"
+        eType="#//Etiquette" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Response">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAnswer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Reponse">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="texte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estVraie" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SubmitButton" eSuperTypes="#//Button"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NextButton" eSuperTypes="#//Button"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BackButton" eSuperTypes="#//Button"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoutonSoumettre" eSuperTypes="#//Bouton"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoutonSuivant" eSuperTypes="#//Bouton"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BoutonRetour" eSuperTypes="#//Bouton"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Etiquette">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>
