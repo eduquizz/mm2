@@ -213,7 +213,7 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getQuestionnaire_Resultat() {
+	public EAttribute getQuestionnaire_Nom() {
 		return (EAttribute) questionnaireEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -223,18 +223,8 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getQuestionnaire_Nom() {
-		return (EAttribute) questionnaireEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getQuestionnaire_RetourAutorise() {
-		return (EAttribute) questionnaireEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) questionnaireEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -363,8 +353,8 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 * @generated
 	 */
 	@Override
-	public EClass getPageResultat() {
-		return pageResultatEClass;
+	public EReference getPageSoumission_Question() {
+		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -373,8 +363,8 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getPageResultat_Resultat() {
-		return (EAttribute) pageResultatEClass.getEStructuralFeatures().get(0);
+	public EClass getPageResultat() {
+		return pageResultatEClass;
 	}
 
 	/**
@@ -549,7 +539,6 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		// Create classes and their features
 		questionnaireEClass = createEClass(QUESTIONNAIRE);
 		createEReference(questionnaireEClass, QUESTIONNAIRE__PAGE);
-		createEAttribute(questionnaireEClass, QUESTIONNAIRE__RESULTAT);
 		createEAttribute(questionnaireEClass, QUESTIONNAIRE__NOM);
 		createEAttribute(questionnaireEClass, QUESTIONNAIRE__RETOUR_AUTORISE);
 
@@ -569,9 +558,9 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 
 		pageSoumissionEClass = createEClass(PAGE_SOUMISSION);
 		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__BOUTON_SOUMETTRE);
+		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__QUESTION);
 
 		pageResultatEClass = createEClass(PAGE_RESULTAT);
-		createEAttribute(pageResultatEClass, PAGE_RESULTAT__RESULTAT);
 
 		questionEClass = createEClass(QUESTION);
 		createEReference(questionEClass, QUESTION__REPONSE);
@@ -638,9 +627,6 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		initEReference(getQuestionnaire_Page(), this.getPage(), null, "page", null, 1, -1, Questionnaire.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getQuestionnaire_Resultat(), ecorePackage.getEDouble(), "resultat", "0.0", 0, 1,
-				Questionnaire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuestionnaire_Nom(), ecorePackage.getEString(), "nom", null, 0, 1, Questionnaire.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuestionnaire_RetourAutorise(), ecorePackage.getEBoolean(), "retourAutorise", "true", 0, 1,
@@ -679,12 +665,12 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		initEReference(getPageSoumission_BoutonSoumettre(), this.getBoutonSoumettre(), null, "boutonSoumettre", null, 1,
 				1, PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPageSoumission_Question(), this.getQuestion(), null, "question", null, 1, -1,
+				PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pageResultatEClass, PageResultat.class, "PageResultat", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPageResultat_Resultat(), ecorePackage.getEDouble(), "resultat", null, 0, 1,
-				PageResultat.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(questionEClass, Question.class, "Question", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);

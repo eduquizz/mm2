@@ -4,8 +4,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="Questionnaire">
     <eStructuralFeatures xsi:type="ecore:EReference" name="page" lowerBound="1" upperBound="-1"
         eType="#//Page" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
-        defaultValueLiteral="0.0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="retourAutorise" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
@@ -30,10 +28,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="PageSoumission" eSuperTypes="#//Navigable #//Page">
     <eStructuralFeatures xsi:type="ecore:EReference" name="boutonSoumettre" lowerBound="1"
         eType="#//BoutonSoumettre"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="question" lowerBound="1"
+        upperBound="-1" eType="#//Question" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PageResultat" eSuperTypes="#//Page">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultat" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PageResultat" eSuperTypes="#//Page"/>
   <eClassifiers xsi:type="ecore:EClass" name="Question">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reponse" lowerBound="2"
         upperBound="-1" eType="#//Reponse" containment="true"/>

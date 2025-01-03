@@ -2,20 +2,25 @@
  */
 package mm2.impl;
 
+import java.util.Collection;
 import mm2.BoutonSoumettre;
 import mm2.Mm2Package;
 import mm2.Navigable;
 import mm2.Page;
 import mm2.PageSoumission;
 
+import mm2.Question;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +34,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link mm2.impl.PageSoumissionImpl#getPagePrecedente <em>Page Precedente</em>}</li>
  *   <li>{@link mm2.impl.PageSoumissionImpl#getTitre <em>Titre</em>}</li>
  *   <li>{@link mm2.impl.PageSoumissionImpl#getBoutonSoumettre <em>Bouton Soumettre</em>}</li>
+ *   <li>{@link mm2.impl.PageSoumissionImpl#getQuestion <em>Question</em>}</li>
  * </ul>
  *
  * @generated
@@ -83,6 +89,16 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected BoutonSoumettre boutonSoumettre;
+
+	/**
+	 * The cached value of the '{@link #getQuestion() <em>Question</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQuestion()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Question> question;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -314,6 +330,20 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 * @generated
 	 */
 	@Override
+	public EList<Question> getQuestion() {
+		if (question == null) {
+			question = new EObjectContainmentEList<Question>(Question.class, this,
+					Mm2Package.PAGE_SOUMISSION__QUESTION);
+		}
+		return question;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Mm2Package.PAGE_SOUMISSION__PAGE_SUIVANTE:
@@ -342,6 +372,8 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 			return basicSetPageSuivante(null, msgs);
 		case Mm2Package.PAGE_SOUMISSION__PAGE_PRECEDENTE:
 			return basicSetPagePrecedente(null, msgs);
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			return ((InternalEList<?>) getQuestion()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -368,6 +400,8 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 			if (resolve)
 				return getBoutonSoumettre();
 			return basicGetBoutonSoumettre();
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			return getQuestion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -377,6 +411,7 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -391,6 +426,10 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 			return;
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_SOUMETTRE:
 			setBoutonSoumettre((BoutonSoumettre) newValue);
+			return;
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			getQuestion().clear();
+			getQuestion().addAll((Collection<? extends Question>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -416,6 +455,9 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_SOUMETTRE:
 			setBoutonSoumettre((BoutonSoumettre) null);
 			return;
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			getQuestion().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -436,6 +478,8 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 			return TITRE_EDEFAULT == null ? titre != null : !TITRE_EDEFAULT.equals(titre);
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_SOUMETTRE:
 			return boutonSoumettre != null;
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			return question != null && !question.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

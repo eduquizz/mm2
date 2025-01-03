@@ -4,17 +4,11 @@ package mm2.provider;
 
 import java.util.Collection;
 import java.util.List;
-
-import mm2.Mm2Package;
 import mm2.PageResultat;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link mm2.PageResultat} object.
@@ -44,25 +38,8 @@ public class PageResultatItemProvider extends PageItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addResultatPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Resultat feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addResultatPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_PageResultat_resultat_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_PageResultat_resultat_feature",
-								"_UI_PageResultat_type"),
-						Mm2Package.Literals.PAGE_RESULTAT__RESULTAT, true, false, false,
-						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -109,12 +86,6 @@ public class PageResultatItemProvider extends PageItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(PageResultat.class)) {
-		case Mm2Package.PAGE_RESULTAT__RESULTAT:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		}
 		super.notifyChanged(notification);
 	}
 

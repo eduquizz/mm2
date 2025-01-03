@@ -10,7 +10,6 @@
   <genPackages prefix="Mm2" disposableProviderFactory="true" ecorePackage="mm2.ecore#/">
     <genClasses ecoreClass="mm2.ecore#//Questionnaire">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//Questionnaire/page"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/resultat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/nom"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/retourAutorise"/>
     </genClasses>
@@ -29,10 +28,9 @@
     </genClasses>
     <genClasses ecoreClass="mm2.ecore#//PageSoumission">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/boutonSoumettre"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/question"/>
     </genClasses>
-    <genClasses ecoreClass="mm2.ecore#//PageResultat">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//PageResultat/resultat"/>
-    </genClasses>
+    <genClasses ecoreClass="mm2.ecore#//PageResultat"/>
     <genClasses ecoreClass="mm2.ecore#//Question">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//Question/reponse"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Question/ennonce"/>

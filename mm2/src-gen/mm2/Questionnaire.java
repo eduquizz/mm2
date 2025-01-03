@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link mm2.Questionnaire#getPage <em>Page</em>}</li>
- *   <li>{@link mm2.Questionnaire#getResultat <em>Resultat</em>}</li>
  *   <li>{@link mm2.Questionnaire#getNom <em>Nom</em>}</li>
  *   <li>{@link mm2.Questionnaire#isRetourAutorise <em>Retour Autorise</em>}</li>
  * </ul>
@@ -37,29 +36,6 @@ public interface Questionnaire extends EObject {
 	 * @generated
 	 */
 	EList<Page> getPage();
-
-	/**
-	 * Returns the value of the '<em><b>Resultat</b></em>' attribute.
-	 * The default value is <code>"0.0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resultat</em>' attribute.
-	 * @see #setResultat(double)
-	 * @see mm2.Mm2Package#getQuestionnaire_Resultat()
-	 * @model default="0.0"
-	 * @generated
-	 */
-	double getResultat();
-
-	/**
-	 * Sets the value of the '{@link mm2.Questionnaire#getResultat <em>Resultat</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resultat</em>' attribute.
-	 * @see #getResultat()
-	 * @generated
-	 */
-	void setResultat(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Nom</b></em>' attribute.

@@ -76,22 +76,13 @@ public interface Mm2Package extends EPackage {
 	int QUESTIONNAIRE__PAGE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Resultat</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTIONNAIRE__RESULTAT = 1;
-
-	/**
 	 * The feature id for the '<em><b>Nom</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUESTIONNAIRE__NOM = 2;
+	int QUESTIONNAIRE__NOM = 1;
 
 	/**
 	 * The feature id for the '<em><b>Retour Autorise</b></em>' attribute.
@@ -100,7 +91,7 @@ public interface Mm2Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUESTIONNAIRE__RETOUR_AUTORISE = 3;
+	int QUESTIONNAIRE__RETOUR_AUTORISE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Questionnaire</em>' class.
@@ -109,7 +100,7 @@ public interface Mm2Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int QUESTIONNAIRE_FEATURE_COUNT = 4;
+	int QUESTIONNAIRE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Questionnaire</em>' class.
@@ -360,13 +351,22 @@ public interface Mm2Package extends EPackage {
 	int PAGE_SOUMISSION__BOUTON_SOUMETTRE = NAVIGABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Question</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_SOUMISSION__QUESTION = NAVIGABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Page Soumission</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_SOUMISSION_FEATURE_COUNT = NAVIGABLE_FEATURE_COUNT + 2;
+	int PAGE_SOUMISSION_FEATURE_COUNT = NAVIGABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Page Soumission</em>' class.
@@ -397,22 +397,13 @@ public interface Mm2Package extends EPackage {
 	int PAGE_RESULTAT__TITRE = PAGE__TITRE;
 
 	/**
-	 * The feature id for the '<em><b>Resultat</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAGE_RESULTAT__RESULTAT = PAGE_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Page Resultat</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_RESULTAT_FEATURE_COUNT = PAGE_FEATURE_COUNT + 1;
+	int PAGE_RESULTAT_FEATURE_COUNT = PAGE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Page Resultat</em>' class.
@@ -685,17 +676,6 @@ public interface Mm2Package extends EPackage {
 	EReference getQuestionnaire_Page();
 
 	/**
-	 * Returns the meta object for the attribute '{@link mm2.Questionnaire#getResultat <em>Resultat</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Resultat</em>'.
-	 * @see mm2.Questionnaire#getResultat()
-	 * @see #getQuestionnaire()
-	 * @generated
-	 */
-	EAttribute getQuestionnaire_Resultat();
-
-	/**
 	 * Returns the meta object for the attribute '{@link mm2.Questionnaire#getNom <em>Nom</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -845,6 +825,17 @@ public interface Mm2Package extends EPackage {
 	EReference getPageSoumission_BoutonSoumettre();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link mm2.PageSoumission#getQuestion <em>Question</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Question</em>'.
+	 * @see mm2.PageSoumission#getQuestion()
+	 * @see #getPageSoumission()
+	 * @generated
+	 */
+	EReference getPageSoumission_Question();
+
+	/**
 	 * Returns the meta object for class '{@link mm2.PageResultat <em>Page Resultat</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -853,17 +844,6 @@ public interface Mm2Package extends EPackage {
 	 * @generated
 	 */
 	EClass getPageResultat();
-
-	/**
-	 * Returns the meta object for the attribute '{@link mm2.PageResultat#getResultat <em>Resultat</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Resultat</em>'.
-	 * @see mm2.PageResultat#getResultat()
-	 * @see #getPageResultat()
-	 * @generated
-	 */
-	EAttribute getPageResultat_Resultat();
 
 	/**
 	 * Returns the meta object for class '{@link mm2.Question <em>Question</em>}'.
@@ -1055,14 +1035,6 @@ public interface Mm2Package extends EPackage {
 		EReference QUESTIONNAIRE__PAGE = eINSTANCE.getQuestionnaire_Page();
 
 		/**
-		 * The meta object literal for the '<em><b>Resultat</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute QUESTIONNAIRE__RESULTAT = eINSTANCE.getQuestionnaire_Resultat();
-
-		/**
 		 * The meta object literal for the '<em><b>Nom</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1185,6 +1157,14 @@ public interface Mm2Package extends EPackage {
 		EReference PAGE_SOUMISSION__BOUTON_SOUMETTRE = eINSTANCE.getPageSoumission_BoutonSoumettre();
 
 		/**
+		 * The meta object literal for the '<em><b>Question</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAGE_SOUMISSION__QUESTION = eINSTANCE.getPageSoumission_Question();
+
+		/**
 		 * The meta object literal for the '{@link mm2.impl.PageResultatImpl <em>Page Resultat</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1193,14 +1173,6 @@ public interface Mm2Package extends EPackage {
 		 * @generated
 		 */
 		EClass PAGE_RESULTAT = eINSTANCE.getPageResultat();
-
-		/**
-		 * The meta object literal for the '<em><b>Resultat</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PAGE_RESULTAT__RESULTAT = eINSTANCE.getPageResultat_Resultat();
 
 		/**
 		 * The meta object literal for the '{@link mm2.impl.QuestionImpl <em>Question</em>}' class.

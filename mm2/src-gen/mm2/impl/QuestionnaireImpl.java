@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link mm2.impl.QuestionnaireImpl#getPage <em>Page</em>}</li>
- *   <li>{@link mm2.impl.QuestionnaireImpl#getResultat <em>Resultat</em>}</li>
  *   <li>{@link mm2.impl.QuestionnaireImpl#getNom <em>Nom</em>}</li>
  *   <li>{@link mm2.impl.QuestionnaireImpl#isRetourAutorise <em>Retour Autorise</em>}</li>
  * </ul>
@@ -48,26 +47,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 	 * @ordered
 	 */
 	protected EList<Page> page;
-
-	/**
-	 * The default value of the '{@link #getResultat() <em>Resultat</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResultat()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double RESULTAT_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getResultat() <em>Resultat</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResultat()
-	 * @generated
-	 * @ordered
-	 */
-	protected double resultat = RESULTAT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getNom() <em>Nom</em>}' attribute.
@@ -147,30 +126,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 	 * @generated
 	 */
 	@Override
-	public double getResultat() {
-		return resultat;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setResultat(double newResultat) {
-		double oldResultat = resultat;
-		resultat = newResultat;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.QUESTIONNAIRE__RESULTAT, oldResultat,
-					resultat));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public String getNom() {
 		return nom;
 	}
@@ -236,8 +191,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 		switch (featureID) {
 		case Mm2Package.QUESTIONNAIRE__PAGE:
 			return getPage();
-		case Mm2Package.QUESTIONNAIRE__RESULTAT:
-			return getResultat();
 		case Mm2Package.QUESTIONNAIRE__NOM:
 			return getNom();
 		case Mm2Package.QUESTIONNAIRE__RETOUR_AUTORISE:
@@ -258,9 +211,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 		case Mm2Package.QUESTIONNAIRE__PAGE:
 			getPage().clear();
 			getPage().addAll((Collection<? extends Page>) newValue);
-			return;
-		case Mm2Package.QUESTIONNAIRE__RESULTAT:
-			setResultat((Double) newValue);
 			return;
 		case Mm2Package.QUESTIONNAIRE__NOM:
 			setNom((String) newValue);
@@ -283,9 +233,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 		case Mm2Package.QUESTIONNAIRE__PAGE:
 			getPage().clear();
 			return;
-		case Mm2Package.QUESTIONNAIRE__RESULTAT:
-			setResultat(RESULTAT_EDEFAULT);
-			return;
 		case Mm2Package.QUESTIONNAIRE__NOM:
 			setNom(NOM_EDEFAULT);
 			return;
@@ -306,8 +253,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 		switch (featureID) {
 		case Mm2Package.QUESTIONNAIRE__PAGE:
 			return page != null && !page.isEmpty();
-		case Mm2Package.QUESTIONNAIRE__RESULTAT:
-			return resultat != RESULTAT_EDEFAULT;
 		case Mm2Package.QUESTIONNAIRE__NOM:
 			return NOM_EDEFAULT == null ? nom != null : !NOM_EDEFAULT.equals(nom);
 		case Mm2Package.QUESTIONNAIRE__RETOUR_AUTORISE:
@@ -327,9 +272,7 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 			return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (resultat: ");
-		result.append(resultat);
-		result.append(", nom: ");
+		result.append(" (nom: ");
 		result.append(nom);
 		result.append(", retourAutorise: ");
 		result.append(retourAutorise);

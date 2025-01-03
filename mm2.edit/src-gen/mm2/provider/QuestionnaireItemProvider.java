@@ -56,27 +56,10 @@ public class QuestionnaireItemProvider extends ItemProviderAdapter implements IE
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addResultatPropertyDescriptor(object);
 			addNomPropertyDescriptor(object);
 			addRetourAutorisePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Resultat feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addResultatPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Questionnaire_resultat_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Questionnaire_resultat_feature",
-								"_UI_Questionnaire_type"),
-						Mm2Package.Literals.QUESTIONNAIRE__RESULTAT, true, false, false,
-						ItemPropertyDescriptor.REAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -170,8 +153,9 @@ public class QuestionnaireItemProvider extends ItemProviderAdapter implements IE
 	 */
 	@Override
 	public String getText(Object object) {
-		Questionnaire questionnaire = (Questionnaire) object;
-		return getString("_UI_Questionnaire_type") + " " + questionnaire.getResultat();
+		String label = ((Questionnaire) object).getNom();
+		return label == null || label.length() == 0 ? getString("_UI_Questionnaire_type")
+				: getString("_UI_Questionnaire_type") + " " + label;
 	}
 
 	/**
@@ -186,7 +170,6 @@ public class QuestionnaireItemProvider extends ItemProviderAdapter implements IE
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Questionnaire.class)) {
-		case Mm2Package.QUESTIONNAIRE__RESULTAT:
 		case Mm2Package.QUESTIONNAIRE__NOM:
 		case Mm2Package.QUESTIONNAIRE__RETOUR_AUTORISE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

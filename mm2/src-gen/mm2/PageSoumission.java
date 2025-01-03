@@ -2,6 +2,8 @@
  */
 package mm2;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Page Soumission</b></em>'.
@@ -12,6 +14,7 @@ package mm2;
  * </p>
  * <ul>
  *   <li>{@link mm2.PageSoumission#getBoutonSoumettre <em>Bouton Soumettre</em>}</li>
+ *   <li>{@link mm2.PageSoumission#getQuestion <em>Question</em>}</li>
  * </ul>
  *
  * @see mm2.Mm2Package#getPageSoumission()
@@ -40,5 +43,17 @@ public interface PageSoumission extends Navigable, Page {
 	 * @generated
 	 */
 	void setBoutonSoumettre(BoutonSoumettre value);
+
+	/**
+	 * Returns the value of the '<em><b>Question</b></em>' containment reference list.
+	 * The list contents are of type {@link mm2.Question}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Question</em>' containment reference list.
+	 * @see mm2.Mm2Package#getPageSoumission_Question()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	EList<Question> getQuestion();
 
 } // PageSoumission
