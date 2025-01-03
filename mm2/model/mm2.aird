@@ -4,7 +4,7 @@
     <semanticResources>mm2.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_j6-fgMUDEe-ZMa-cjKvK0Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j8IWEMUDEe-ZMa-cjKvK0Q" name="mm2" repPath="#_j7xJsMUDEe-ZMa-cjKvK0Q" changeId="1735830232596">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j8IWEMUDEe-ZMa-cjKvK0Q" name="mm2" repPath="#_j7xJsMUDEe-ZMa-cjKvK0Q" changeId="1735934213248">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="mm2.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -27,10 +27,6 @@
             <children xmi:type="notation:Node" xmi:id="_NUhIr8UGEe-Gt540-YHsjw" type="3010" element="_NUdeQMUGEe-Gt540-YHsjw">
               <styles xmi:type="notation:FontStyle" xmi:id="_NUhIsMUGEe-Gt540-YHsjw" fontColor="2697711" fontName="Ubuntu" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_NUhIscUGEe-Gt540-YHsjw"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_Ow8qYMUGEe-Gt540-YHsjw" type="3010" element="_Ow3x4MUGEe-Gt540-YHsjw">
-              <styles xmi:type="notation:FontStyle" xmi:id="_Ow8qYcUGEe-Gt540-YHsjw" fontColor="2697711" fontName="Ubuntu" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_Ow8qYsUGEe-Gt540-YHsjw"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="__Rrx8cUDEe-Gt540-YHsjw"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="__Rrx8sUDEe-Gt540-YHsjw"/>
@@ -497,14 +493,6 @@
         <target xmi:type="ecore:EAttribute" href="mm2.ecore#//Questionnaire/retourAutorise"/>
         <semanticElements xmi:type="ecore:EAttribute" href="mm2.ecore#//Questionnaire/retourAutorise"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_Vygor8UGEe-Gt540-YHsjw" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_Ow3x4MUGEe-Gt540-YHsjw" name="melange : EBoolean = true" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="mm2.ecore#//Questionnaire/melange"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="mm2.ecore#//Questionnaire/melange"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_Stv3NsUGEe-Gt540-YHsjw" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>

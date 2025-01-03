@@ -243,16 +243,6 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getQuestionnaire_Melange() {
-		return (EAttribute) questionnaireEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getPage() {
 		return pageEClass;
 	}
@@ -562,7 +552,6 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		createEAttribute(questionnaireEClass, QUESTIONNAIRE__RESULTAT);
 		createEAttribute(questionnaireEClass, QUESTIONNAIRE__NOM);
 		createEAttribute(questionnaireEClass, QUESTIONNAIRE__RETOUR_AUTORISE);
-		createEAttribute(questionnaireEClass, QUESTIONNAIRE__MELANGE);
 
 		pageEClass = createEClass(PAGE);
 		createEAttribute(pageEClass, PAGE__TITRE);
@@ -655,9 +644,6 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		initEAttribute(getQuestionnaire_Nom(), ecorePackage.getEString(), "nom", null, 0, 1, Questionnaire.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuestionnaire_RetourAutorise(), ecorePackage.getEBoolean(), "retourAutorise", "true", 0, 1,
-				Questionnaire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getQuestionnaire_Melange(), ecorePackage.getEBoolean(), "melange", "true", 0, 1,
 				Questionnaire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 

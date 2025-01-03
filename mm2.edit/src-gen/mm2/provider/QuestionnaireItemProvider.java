@@ -59,7 +59,6 @@ public class QuestionnaireItemProvider extends ItemProviderAdapter implements IE
 			addResultatPropertyDescriptor(object);
 			addNomPropertyDescriptor(object);
 			addRetourAutorisePropertyDescriptor(object);
-			addMelangePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -109,22 +108,6 @@ public class QuestionnaireItemProvider extends ItemProviderAdapter implements IE
 						getString("_UI_PropertyDescriptor_description", "_UI_Questionnaire_retourAutorise_feature",
 								"_UI_Questionnaire_type"),
 						Mm2Package.Literals.QUESTIONNAIRE__RETOUR_AUTORISE, true, false, false,
-						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Melange feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMelangePropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Questionnaire_melange_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Questionnaire_melange_feature",
-								"_UI_Questionnaire_type"),
-						Mm2Package.Literals.QUESTIONNAIRE__MELANGE, true, false, false,
 						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
@@ -206,7 +189,6 @@ public class QuestionnaireItemProvider extends ItemProviderAdapter implements IE
 		case Mm2Package.QUESTIONNAIRE__RESULTAT:
 		case Mm2Package.QUESTIONNAIRE__NOM:
 		case Mm2Package.QUESTIONNAIRE__RETOUR_AUTORISE:
-		case Mm2Package.QUESTIONNAIRE__MELANGE:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case Mm2Package.QUESTIONNAIRE__PAGE:

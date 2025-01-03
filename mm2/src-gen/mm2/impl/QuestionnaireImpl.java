@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link mm2.impl.QuestionnaireImpl#getResultat <em>Resultat</em>}</li>
  *   <li>{@link mm2.impl.QuestionnaireImpl#getNom <em>Nom</em>}</li>
  *   <li>{@link mm2.impl.QuestionnaireImpl#isRetourAutorise <em>Retour Autorise</em>}</li>
- *   <li>{@link mm2.impl.QuestionnaireImpl#isMelange <em>Melange</em>}</li>
  * </ul>
  *
  * @generated
@@ -109,26 +108,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 	 * @ordered
 	 */
 	protected boolean retourAutorise = RETOUR_AUTORISE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isMelange() <em>Melange</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isMelange()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean MELANGE_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isMelange() <em>Melange</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isMelange()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean melange = MELANGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -239,30 +218,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 	 * @generated
 	 */
 	@Override
-	public boolean isMelange() {
-		return melange;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setMelange(boolean newMelange) {
-		boolean oldMelange = melange;
-		melange = newMelange;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.QUESTIONNAIRE__MELANGE, oldMelange,
-					melange));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Mm2Package.QUESTIONNAIRE__PAGE:
@@ -287,8 +242,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 			return getNom();
 		case Mm2Package.QUESTIONNAIRE__RETOUR_AUTORISE:
 			return isRetourAutorise();
-		case Mm2Package.QUESTIONNAIRE__MELANGE:
-			return isMelange();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -315,9 +268,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 		case Mm2Package.QUESTIONNAIRE__RETOUR_AUTORISE:
 			setRetourAutorise((Boolean) newValue);
 			return;
-		case Mm2Package.QUESTIONNAIRE__MELANGE:
-			setMelange((Boolean) newValue);
-			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -342,9 +292,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 		case Mm2Package.QUESTIONNAIRE__RETOUR_AUTORISE:
 			setRetourAutorise(RETOUR_AUTORISE_EDEFAULT);
 			return;
-		case Mm2Package.QUESTIONNAIRE__MELANGE:
-			setMelange(MELANGE_EDEFAULT);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -365,8 +312,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 			return NOM_EDEFAULT == null ? nom != null : !NOM_EDEFAULT.equals(nom);
 		case Mm2Package.QUESTIONNAIRE__RETOUR_AUTORISE:
 			return retourAutorise != RETOUR_AUTORISE_EDEFAULT;
-		case Mm2Package.QUESTIONNAIRE__MELANGE:
-			return melange != MELANGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -388,8 +333,6 @@ public class QuestionnaireImpl extends MinimalEObjectImpl.Container implements Q
 		result.append(nom);
 		result.append(", retourAutorise: ");
 		result.append(retourAutorise);
-		result.append(", melange: ");
-		result.append(melange);
 		result.append(')');
 		return result.toString();
 	}

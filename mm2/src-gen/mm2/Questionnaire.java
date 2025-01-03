@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link mm2.Questionnaire#getResultat <em>Resultat</em>}</li>
  *   <li>{@link mm2.Questionnaire#getNom <em>Nom</em>}</li>
  *   <li>{@link mm2.Questionnaire#isRetourAutorise <em>Retour Autorise</em>}</li>
- *   <li>{@link mm2.Questionnaire#isMelange <em>Melange</em>}</li>
  * </ul>
  *
  * @see mm2.Mm2Package#getQuestionnaire()
@@ -106,28 +105,5 @@ public interface Questionnaire extends EObject {
 	 * @generated
 	 */
 	void setRetourAutorise(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Melange</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Melange</em>' attribute.
-	 * @see #setMelange(boolean)
-	 * @see mm2.Mm2Package#getQuestionnaire_Melange()
-	 * @model default="true"
-	 * @generated
-	 */
-	boolean isMelange();
-
-	/**
-	 * Sets the value of the '{@link mm2.Questionnaire#isMelange <em>Melange</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Melange</em>' attribute.
-	 * @see #isMelange()
-	 * @generated
-	 */
-	void setMelange(boolean value);
 
 } // Questionnaire

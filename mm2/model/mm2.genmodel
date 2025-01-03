@@ -13,7 +13,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/resultat"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/nom"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/retourAutorise"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Questionnaire/melange"/>
     </genClasses>
     <genClasses image="false" ecoreClass="mm2.ecore#//Page">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mm2.ecore#//Page/titre"/>

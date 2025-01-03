@@ -103,22 +103,13 @@ public interface Mm2Package extends EPackage {
 	int QUESTIONNAIRE__RETOUR_AUTORISE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Melange</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTIONNAIRE__MELANGE = 4;
-
-	/**
 	 * The number of structural features of the '<em>Questionnaire</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUESTIONNAIRE_FEATURE_COUNT = 5;
+	int QUESTIONNAIRE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Questionnaire</em>' class.
@@ -727,17 +718,6 @@ public interface Mm2Package extends EPackage {
 	EAttribute getQuestionnaire_RetourAutorise();
 
 	/**
-	 * Returns the meta object for the attribute '{@link mm2.Questionnaire#isMelange <em>Melange</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Melange</em>'.
-	 * @see mm2.Questionnaire#isMelange()
-	 * @see #getQuestionnaire()
-	 * @generated
-	 */
-	EAttribute getQuestionnaire_Melange();
-
-	/**
 	 * Returns the meta object for class '{@link mm2.Page <em>Page</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1097,14 +1077,6 @@ public interface Mm2Package extends EPackage {
 		 * @generated
 		 */
 		EAttribute QUESTIONNAIRE__RETOUR_AUTORISE = eINSTANCE.getQuestionnaire_RetourAutorise();
-
-		/**
-		 * The meta object literal for the '<em><b>Melange</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute QUESTIONNAIRE__MELANGE = eINSTANCE.getQuestionnaire_Melange();
 
 		/**
 		 * The meta object literal for the '{@link mm2.impl.PageImpl <em>Page</em>}' class.
