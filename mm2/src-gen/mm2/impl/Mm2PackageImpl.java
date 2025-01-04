@@ -18,11 +18,15 @@ import mm2.Question;
 import mm2.Questionnaire;
 import mm2.Reponse;
 
+import mm2.util.Mm2Validator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -179,6 +183,14 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		// Initialize created meta-data
 		theMm2Package.initializePackageContents();
 
+		// Register package validator
+		EValidator.Registry.INSTANCE.put(theMm2Package, new EValidator.Descriptor() {
+			@Override
+			public EValidator getEValidator() {
+				return Mm2Validator.INSTANCE;
+			}
+		});
+
 		// Mark meta-data to indicate it can't be changed
 		theMm2Package.freeze();
 
@@ -233,6 +245,56 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 * @generated
 	 */
 	@Override
+	public EOperation getQuestionnaire__BoutonRetourInterdit__DiagnosticChain_Map() {
+		return questionnaireEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getQuestionnaire__AuMoinsUneSoumission__DiagnosticChain_Map() {
+		return questionnaireEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getQuestionnaire__AuMoinsUneResult__DiagnosticChain_Map() {
+		return questionnaireEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getQuestionnaire__AuMoinsUneQuestion__DiagnosticChain_Map() {
+		return questionnaireEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getQuestionnaire__QuestionPrecedente__DiagnosticChain_Map() {
+		return questionnaireEClass.getEOperations().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPage() {
 		return pageEClass;
 	}
@@ -274,7 +336,7 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 */
 	@Override
 	public EReference getNavigable_PageSuivante() {
-		return (EReference) navigableEClass.getEStructuralFeatures().get(0);
+		return (EReference) navigableEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -284,7 +346,7 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 */
 	@Override
 	public EReference getNavigable_PagePrecedente() {
-		return (EReference) navigableEClass.getEStructuralFeatures().get(1);
+		return (EReference) navigableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -305,6 +367,26 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	@Override
 	public EReference getPageQuestion_Question() {
 		return (EReference) pageQuestionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getPageQuestion__BtnRetour__DiagnosticChain_Map() {
+		return pageQuestionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getPageQuestion__BtnSuivant__DiagnosticChain_Map() {
+		return pageQuestionEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -344,7 +426,27 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 */
 	@Override
 	public EReference getPageSoumission_BoutonSoumettre() {
-		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(0);
+		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getPageSoumission__BtnRetour__DiagnosticChain_Map() {
+		return pageSoumissionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getPageSoumission__BtnSuivant__DiagnosticChain_Map() {
+		return pageSoumissionEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -354,6 +456,16 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 */
 	@Override
 	public EReference getPageSoumission_Question() {
+		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPageSoumission_BoutonRetour() {
 		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -433,6 +545,16 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 * @generated
 	 */
 	@Override
+	public EOperation getQuestion__EnnoncePasVide__DiagnosticChain_Map() {
+		return questionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getReponse() {
 		return reponseEClass;
 	}
@@ -455,6 +577,16 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	@Override
 	public EAttribute getReponse_EstVraie() {
 		return (EAttribute) reponseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getReponse__ReponseNonVide__DiagnosticChain_Map() {
+		return reponseEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -541,6 +673,11 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		createEReference(questionnaireEClass, QUESTIONNAIRE__PAGE);
 		createEAttribute(questionnaireEClass, QUESTIONNAIRE__NOM);
 		createEAttribute(questionnaireEClass, QUESTIONNAIRE__RETOUR_AUTORISE);
+		createEOperation(questionnaireEClass, QUESTIONNAIRE___BOUTON_RETOUR_INTERDIT__DIAGNOSTICCHAIN_MAP);
+		createEOperation(questionnaireEClass, QUESTIONNAIRE___AU_MOINS_UNE_SOUMISSION__DIAGNOSTICCHAIN_MAP);
+		createEOperation(questionnaireEClass, QUESTIONNAIRE___AU_MOINS_UNE_RESULT__DIAGNOSTICCHAIN_MAP);
+		createEOperation(questionnaireEClass, QUESTIONNAIRE___AU_MOINS_UNE_QUESTION__DIAGNOSTICCHAIN_MAP);
+		createEOperation(questionnaireEClass, QUESTIONNAIRE___QUESTION_PRECEDENTE__DIAGNOSTICCHAIN_MAP);
 
 		pageEClass = createEClass(PAGE);
 		createEAttribute(pageEClass, PAGE__TITRE);
@@ -548,17 +685,22 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		boutonEClass = createEClass(BOUTON);
 
 		navigableEClass = createEClass(NAVIGABLE);
-		createEReference(navigableEClass, NAVIGABLE__PAGE_SUIVANTE);
 		createEReference(navigableEClass, NAVIGABLE__PAGE_PRECEDENTE);
+		createEReference(navigableEClass, NAVIGABLE__PAGE_SUIVANTE);
 
 		pageQuestionEClass = createEClass(PAGE_QUESTION);
 		createEReference(pageQuestionEClass, PAGE_QUESTION__BOUTON_SUIVANT);
 		createEReference(pageQuestionEClass, PAGE_QUESTION__BOUTON_RETOUR);
 		createEReference(pageQuestionEClass, PAGE_QUESTION__QUESTION);
+		createEOperation(pageQuestionEClass, PAGE_QUESTION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP);
+		createEOperation(pageQuestionEClass, PAGE_QUESTION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP);
 
 		pageSoumissionEClass = createEClass(PAGE_SOUMISSION);
-		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__BOUTON_SOUMETTRE);
 		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__QUESTION);
+		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__BOUTON_RETOUR);
+		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__BOUTON_SOUMETTRE);
+		createEOperation(pageSoumissionEClass, PAGE_SOUMISSION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP);
+		createEOperation(pageSoumissionEClass, PAGE_SOUMISSION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP);
 
 		pageResultatEClass = createEClass(PAGE_RESULTAT);
 
@@ -568,10 +710,12 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		createEAttribute(questionEClass, QUESTION__DIFFICULTE);
 		createEAttribute(questionEClass, QUESTION__REPONSES_MULTIPLES);
 		createEReference(questionEClass, QUESTION__ETIQUETTE);
+		createEOperation(questionEClass, QUESTION___ENNONCE_PAS_VIDE__DIAGNOSTICCHAIN_MAP);
 
 		reponseEClass = createEClass(REPONSE);
 		createEAttribute(reponseEClass, REPONSE__TEXTE);
 		createEAttribute(reponseEClass, REPONSE__EST_VRAIE);
+		createEOperation(reponseEClass, REPONSE___REPONSE_NON_VIDE__DIAGNOSTICCHAIN_MAP);
 
 		boutonSoumettreEClass = createEClass(BOUTON_SOUMETTRE);
 
@@ -633,6 +777,56 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 				Questionnaire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
+		EOperation op = initEOperation(getQuestionnaire__BoutonRetourInterdit__DiagnosticChain_Map(),
+				ecorePackage.getEBoolean(), "boutonRetourInterdit", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		EGenericType g1 = createEGenericType(ecorePackage.getEMap());
+		EGenericType g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getQuestionnaire__AuMoinsUneSoumission__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"auMoinsUneSoumission", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getQuestionnaire__AuMoinsUneResult__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"auMoinsUneResult", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getQuestionnaire__AuMoinsUneQuestion__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"auMoinsUneQuestion", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getQuestionnaire__QuestionPrecedente__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"questionPrecedente", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(pageEClass, Page.class, "Page", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPage_Titre(), ecorePackage.getEString(), "titre", null, 0, 1, Page.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -641,33 +835,76 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 
 		initEClass(navigableEClass, Navigable.class, "Navigable", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNavigable_PageSuivante(), this.getPage(), null, "pageSuivante", null, 0, 1, Navigable.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNavigable_PagePrecedente(), this.getPage(), null, "pagePrecedente", null, 0, 1,
-				Navigable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				Navigable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNavigable_PageSuivante(), this.getPage(), null, "pageSuivante", null, 0, 1, Navigable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pageQuestionEClass, PageQuestion.class, "PageQuestion", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPageQuestion_BoutonSuivant(), this.getBoutonSuivant(), null, "boutonSuivant", null, 1, 1,
-				PageQuestion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				PageQuestion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPageQuestion_BoutonRetour(), this.getBoutonRetour(), null, "boutonRetour", null, 0, 1,
-				PageQuestion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				PageQuestion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPageQuestion_Question(), this.getQuestion(), null, "question", null, 1, 1, PageQuestion.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getPageQuestion__BtnRetour__DiagnosticChain_Map(), ecorePackage.getEBoolean(), "btnRetour",
+				0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getPageQuestion__BtnSuivant__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"btnSuivant", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(pageSoumissionEClass, PageSoumission.class, "PageSoumission", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPageSoumission_BoutonSoumettre(), this.getBoutonSoumettre(), null, "boutonSoumettre", null, 1,
-				1, PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPageSoumission_Question(), this.getQuestion(), null, "question", null, 1, -1,
 				PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPageSoumission_BoutonRetour(), this.getBoutonRetour(), null, "boutonRetour", null, 0, 1,
+				PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPageSoumission_BoutonSoumettre(), this.getBoutonSoumettre(), null, "boutonSoumettre", null, 1,
+				1, PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getPageSoumission__BtnRetour__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"btnRetour", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = initEOperation(getPageSoumission__BtnSuivant__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"btnSuivant", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(pageResultatEClass, PageResultat.class, "PageResultat", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -679,20 +916,40 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuestion_Ennonce(), ecorePackage.getEString(), "ennonce", null, 0, 1, Question.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getQuestion_Difficulte(), ecorePackage.getEInt(), "difficulte", null, 0, 1, Question.class,
+		initEAttribute(getQuestion_Difficulte(), ecorePackage.getEInt(), "difficulte", null, 1, 1, Question.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getQuestion_ReponsesMultiples(), ecorePackage.getEBoolean(), "reponsesMultiples", null, 0, 1,
+		initEAttribute(getQuestion_ReponsesMultiples(), ecorePackage.getEBoolean(), "reponsesMultiples", null, 1, 1,
 				Question.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEReference(getQuestion_Etiquette(), this.getEtiquette(), null, "etiquette", null, 0, -1, Question.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getQuestion__EnnoncePasVide__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"ennoncePasVide", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(reponseEClass, Reponse.class, "Reponse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getReponse_Texte(), ecorePackage.getEString(), "texte", null, 0, 1, Reponse.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getReponse_EstVraie(), ecorePackage.getEBoolean(), "estVraie", null, 0, 1, Reponse.class,
+		initEAttribute(getReponse_EstVraie(), ecorePackage.getEBoolean(), "estVraie", null, 1, 1, Reponse.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getReponse__ReponseNonVide__DiagnosticChain_Map(), ecorePackage.getEBoolean(),
+				"reponseNonVide", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEDiagnosticChain(), "diagnostics", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(ecorePackage.getEMap());
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(ecorePackage.getEJavaObject());
+		g1.getETypeArguments().add(g2);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(boutonSoumettreEClass, BoutonSoumettre.class, "BoutonSoumettre", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -710,6 +967,60 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot
+		createPivotAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation(this, source, new String[] {});
+		addAnnotation(questionnaireEClass, source, new String[] { "constraints", "questionPrecedente" });
+		addAnnotation(pageQuestionEClass, source, new String[] { "constraints", "btnSuivant" });
+		addAnnotation(pageSoumissionEClass, source, new String[] { "constraints", "btnSuivant" });
+		addAnnotation(questionEClass, source, new String[] { "constraints", "ennoncePasVide" });
+		addAnnotation(reponseEClass, source, new String[] { "constraints", "reponseNonVide" });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createPivotAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot";
+		addAnnotation(getQuestionnaire__BoutonRetourInterdit__DiagnosticChain_Map(), source, new String[] { "body",
+				"\n\t    self.retourAutorise = false implies \n\t    self.page->forAll(p |\n\t        p.oclIsTypeOf(PageQuestion) implies p.oclAsType(PageQuestion).boutonRetour->isEmpty()\n\t    )" });
+		addAnnotation(getQuestionnaire__AuMoinsUneSoumission__DiagnosticChain_Map(), source,
+				new String[] { "body", "page->exists(p | p.oclIsTypeOf(PageSoumission))" });
+		addAnnotation(getQuestionnaire__AuMoinsUneResult__DiagnosticChain_Map(), source,
+				new String[] { "body", "page->exists(p | p.oclIsTypeOf(PageResultat))" });
+		addAnnotation(getQuestionnaire__AuMoinsUneQuestion__DiagnosticChain_Map(), source,
+				new String[] { "body", "page->exists(p | p.oclIsTypeOf(PageQuestion))" });
+		addAnnotation(getQuestionnaire__QuestionPrecedente__DiagnosticChain_Map(), source, new String[] { "body",
+				"self.page->forAll(p | \n        (p.oclIsTypeOf(PageQuestion) and not self.retourAutorise) \n        implies \n        (p.oclIsKindOf(Navigable) and p.oclAsType(Navigable).pagePrecedente->isEmpty()))" });
+		addAnnotation(getPageQuestion__BtnRetour__DiagnosticChain_Map(), source, new String[] { "body",
+				"if (self->oclAsType(Page).Questionnaire.retourAutorise) then self.boutonRetour->notEmpty() else self.boutonRetour->isEmpty() endif" });
+		addAnnotation(getPageQuestion__BtnSuivant__DiagnosticChain_Map(), source, new String[] { "body",
+				"if(self->oclAsType(Navigable).pageSuivante->notEmpty()) then self.boutonSuivant->isEmpty() else self.boutonSuivant->notEmpty() endif" });
+		addAnnotation(getPageSoumission__BtnRetour__DiagnosticChain_Map(), source, new String[] { "body",
+				"if (self->oclAsType(Page).Questionnaire.retourAutorise) then self.boutonRetour->notEmpty() else self.boutonRetour->isEmpty() endif" });
+		addAnnotation(getPageSoumission__BtnSuivant__DiagnosticChain_Map(), source,
+				new String[] { "body", "self.pageSuivante->isEmpty()" });
+		addAnnotation(getQuestion__EnnoncePasVide__DiagnosticChain_Map(), source,
+				new String[] { "body", "ennonce->notEmpty()" });
+		addAnnotation(getReponse__ReponseNonVide__DiagnosticChain_Map(), source,
+				new String[] { "body", "texte->notEmpty()" });
 	}
 
 } //Mm2PackageImpl

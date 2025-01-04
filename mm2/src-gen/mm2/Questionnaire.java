@@ -2,6 +2,8 @@
  */
 package mm2;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -21,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see mm2.Mm2Package#getQuestionnaire()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='questionPrecedente'"
  * @generated
  */
 public interface Questionnaire extends EObject {
@@ -81,5 +83,45 @@ public interface Questionnaire extends EObject {
 	 * @generated
 	 */
 	void setRetourAutorise(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='\n\t    self.retourAutorise = false implies \n\t    self.page-&gt;forAll(p |\n\t        p.oclIsTypeOf(PageQuestion) implies p.oclAsType(PageQuestion).boutonRetour-&gt;isEmpty()\n\t    )'"
+	 * @generated
+	 */
+	boolean boutonRetourInterdit(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='page-&gt;exists(p | p.oclIsTypeOf(PageSoumission))'"
+	 * @generated
+	 */
+	boolean auMoinsUneSoumission(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='page-&gt;exists(p | p.oclIsTypeOf(PageResultat))'"
+	 * @generated
+	 */
+	boolean auMoinsUneResult(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='page-&gt;exists(p | p.oclIsTypeOf(PageQuestion))'"
+	 * @generated
+	 */
+	boolean auMoinsUneQuestion(DiagnosticChain diagnostics, Map<Object, Object> context);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='self.page-&gt;forAll(p | \n        (p.oclIsTypeOf(PageQuestion) and not self.retourAutorise) \n        implies \n        (p.oclIsKindOf(Navigable) and p.oclAsType(Navigable).pagePrecedente-&gt;isEmpty()))'"
+	 * @generated
+	 */
+	boolean questionPrecedente(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Questionnaire

@@ -2,6 +2,8 @@
  */
 package mm2;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -23,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see mm2.Mm2Package#getQuestion()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='ennoncePasVide'"
  * @generated
  */
 public interface Question extends EObject {
@@ -68,7 +70,7 @@ public interface Question extends EObject {
 	 * @return the value of the '<em>Difficulte</em>' attribute.
 	 * @see #setDifficulte(int)
 	 * @see mm2.Mm2Package#getQuestion_Difficulte()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	int getDifficulte();
@@ -90,7 +92,7 @@ public interface Question extends EObject {
 	 * @return the value of the '<em>Reponses Multiples</em>' attribute.
 	 * @see #setReponsesMultiples(boolean)
 	 * @see mm2.Mm2Package#getQuestion_ReponsesMultiples()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	boolean isReponsesMultiples();
@@ -116,5 +118,13 @@ public interface Question extends EObject {
 	 * @generated
 	 */
 	EList<Etiquette> getEtiquette();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='ennonce-&gt;notEmpty()'"
+	 * @generated
+	 */
+	boolean ennoncePasVide(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Question

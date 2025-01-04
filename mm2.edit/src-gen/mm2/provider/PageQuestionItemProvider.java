@@ -56,8 +56,8 @@ public class PageQuestionItemProvider extends ItemProviderAdapter implements IEd
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPageSuivantePropertyDescriptor(object);
 			addPagePrecedentePropertyDescriptor(object);
+			addPageSuivantePropertyDescriptor(object);
 			addTitrePropertyDescriptor(object);
 			addBoutonSuivantPropertyDescriptor(object);
 			addBoutonRetourPropertyDescriptor(object);

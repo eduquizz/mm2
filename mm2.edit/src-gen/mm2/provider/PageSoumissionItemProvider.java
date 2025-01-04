@@ -55,9 +55,10 @@ public class PageSoumissionItemProvider extends ItemProviderAdapter implements I
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addPageSuivantePropertyDescriptor(object);
 			addPagePrecedentePropertyDescriptor(object);
+			addPageSuivantePropertyDescriptor(object);
 			addTitrePropertyDescriptor(object);
+			addBoutonRetourPropertyDescriptor(object);
 			addBoutonSoumettrePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -106,6 +107,21 @@ public class PageSoumissionItemProvider extends ItemProviderAdapter implements I
 						getString("_UI_PropertyDescriptor_description", "_UI_Page_titre_feature", "_UI_Page_type"),
 						Mm2Package.Literals.PAGE__TITRE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 						null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Bouton Retour feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBoutonRetourPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_PageSoumission_boutonRetour_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_PageSoumission_boutonRetour_feature",
+								"_UI_PageSoumission_type"),
+						Mm2Package.Literals.PAGE_SOUMISSION__BOUTON_RETOUR, true, false, true, null, null, null));
 	}
 
 	/**

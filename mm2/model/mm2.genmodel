@@ -18,8 +18,8 @@
     </genClasses>
     <genClasses image="false" ecoreClass="mm2.ecore#//Bouton"/>
     <genClasses image="false" ecoreClass="mm2.ecore#//Navigable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//Navigable/pageSuivante"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//Navigable/pagePrecedente"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//Navigable/pageSuivante"/>
     </genClasses>
     <genClasses ecoreClass="mm2.ecore#//PageQuestion">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageQuestion/boutonSuivant"/>
@@ -27,9 +27,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//PageQuestion/question"/>
     </genClasses>
     <genClasses ecoreClass="mm2.ecore#//PageSoumission">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/boutonSoumettre"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/question"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/boutonRetour"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/boutonSoumettre"/>
     </genClasses>
     <genClasses ecoreClass="mm2.ecore#//PageResultat"/>
     <genClasses ecoreClass="mm2.ecore#//Question">

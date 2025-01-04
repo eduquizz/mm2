@@ -4,6 +4,7 @@ package mm2;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see mm2.Mm2Factory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore"
  * @generated
  */
 public interface Mm2Package extends EPackage {
@@ -103,13 +105,58 @@ public interface Mm2Package extends EPackage {
 	int QUESTIONNAIRE_FEATURE_COUNT = 3;
 
 	/**
+	 * The operation id for the '<em>Bouton Retour Interdit</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTIONNAIRE___BOUTON_RETOUR_INTERDIT__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
+	 * The operation id for the '<em>Au Moins Une Soumission</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTIONNAIRE___AU_MOINS_UNE_SOUMISSION__DIAGNOSTICCHAIN_MAP = 1;
+
+	/**
+	 * The operation id for the '<em>Au Moins Une Result</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTIONNAIRE___AU_MOINS_UNE_RESULT__DIAGNOSTICCHAIN_MAP = 2;
+
+	/**
+	 * The operation id for the '<em>Au Moins Une Question</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTIONNAIRE___AU_MOINS_UNE_QUESTION__DIAGNOSTICCHAIN_MAP = 3;
+
+	/**
+	 * The operation id for the '<em>Question Precedente</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTIONNAIRE___QUESTION_PRECEDENTE__DIAGNOSTICCHAIN_MAP = 4;
+
+	/**
 	 * The number of operations of the '<em>Questionnaire</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUESTIONNAIRE_OPERATION_COUNT = 0;
+	int QUESTIONNAIRE_OPERATION_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link mm2.impl.PageImpl <em>Page</em>}' class.
@@ -187,22 +234,22 @@ public interface Mm2Package extends EPackage {
 	int NAVIGABLE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Page Suivante</b></em>' reference.
+	 * The feature id for the '<em><b>Page Precedente</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAVIGABLE__PAGE_SUIVANTE = 0;
+	int NAVIGABLE__PAGE_PRECEDENTE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Page Precedente</b></em>' reference.
+	 * The feature id for the '<em><b>Page Suivante</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAVIGABLE__PAGE_PRECEDENTE = 1;
+	int NAVIGABLE__PAGE_SUIVANTE = 1;
 
 	/**
 	 * The number of structural features of the '<em>Navigable</em>' class.
@@ -233,22 +280,22 @@ public interface Mm2Package extends EPackage {
 	int PAGE_QUESTION = 4;
 
 	/**
-	 * The feature id for the '<em><b>Page Suivante</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAGE_QUESTION__PAGE_SUIVANTE = NAVIGABLE__PAGE_SUIVANTE;
-
-	/**
-	 * The feature id for the '<em><b>Page Precedente</b></em>' reference.
+	 * The feature id for the '<em><b>Page Precedente</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int PAGE_QUESTION__PAGE_PRECEDENTE = NAVIGABLE__PAGE_PRECEDENTE;
+
+	/**
+	 * The feature id for the '<em><b>Page Suivante</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_QUESTION__PAGE_SUIVANTE = NAVIGABLE__PAGE_SUIVANTE;
 
 	/**
 	 * The feature id for the '<em><b>Titre</b></em>' attribute.
@@ -260,7 +307,7 @@ public interface Mm2Package extends EPackage {
 	int PAGE_QUESTION__TITRE = NAVIGABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Bouton Suivant</b></em>' reference.
+	 * The feature id for the '<em><b>Bouton Suivant</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -269,7 +316,7 @@ public interface Mm2Package extends EPackage {
 	int PAGE_QUESTION__BOUTON_SUIVANT = NAVIGABLE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Bouton Retour</b></em>' reference.
+	 * The feature id for the '<em><b>Bouton Retour</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -278,7 +325,7 @@ public interface Mm2Package extends EPackage {
 	int PAGE_QUESTION__BOUTON_RETOUR = NAVIGABLE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Question</b></em>' reference.
+	 * The feature id for the '<em><b>Question</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -296,13 +343,31 @@ public interface Mm2Package extends EPackage {
 	int PAGE_QUESTION_FEATURE_COUNT = NAVIGABLE_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>Btn Retour</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_QUESTION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP = NAVIGABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Btn Suivant</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_QUESTION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP = NAVIGABLE_OPERATION_COUNT + 1;
+
+	/**
 	 * The number of operations of the '<em>Page Question</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_QUESTION_OPERATION_COUNT = NAVIGABLE_OPERATION_COUNT + 0;
+	int PAGE_QUESTION_OPERATION_COUNT = NAVIGABLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link mm2.impl.PageSoumissionImpl <em>Page Soumission</em>}' class.
@@ -315,22 +380,22 @@ public interface Mm2Package extends EPackage {
 	int PAGE_SOUMISSION = 5;
 
 	/**
-	 * The feature id for the '<em><b>Page Suivante</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAGE_SOUMISSION__PAGE_SUIVANTE = NAVIGABLE__PAGE_SUIVANTE;
-
-	/**
-	 * The feature id for the '<em><b>Page Precedente</b></em>' reference.
+	 * The feature id for the '<em><b>Page Precedente</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
 	int PAGE_SOUMISSION__PAGE_PRECEDENTE = NAVIGABLE__PAGE_PRECEDENTE;
+
+	/**
+	 * The feature id for the '<em><b>Page Suivante</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_SOUMISSION__PAGE_SUIVANTE = NAVIGABLE__PAGE_SUIVANTE;
 
 	/**
 	 * The feature id for the '<em><b>Titre</b></em>' attribute.
@@ -342,22 +407,31 @@ public interface Mm2Package extends EPackage {
 	int PAGE_SOUMISSION__TITRE = NAVIGABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Bouton Soumettre</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAGE_SOUMISSION__BOUTON_SOUMETTRE = NAVIGABLE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Question</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_SOUMISSION__QUESTION = NAVIGABLE_FEATURE_COUNT + 2;
+	int PAGE_SOUMISSION__QUESTION = NAVIGABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Bouton Retour</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_SOUMISSION__BOUTON_RETOUR = NAVIGABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Bouton Soumettre</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_SOUMISSION__BOUTON_SOUMETTRE = NAVIGABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Page Soumission</em>' class.
@@ -366,7 +440,25 @@ public interface Mm2Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_SOUMISSION_FEATURE_COUNT = NAVIGABLE_FEATURE_COUNT + 3;
+	int PAGE_SOUMISSION_FEATURE_COUNT = NAVIGABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Btn Retour</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_SOUMISSION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP = NAVIGABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Btn Suivant</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_SOUMISSION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP = NAVIGABLE_OPERATION_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Page Soumission</em>' class.
@@ -375,7 +467,7 @@ public interface Mm2Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_SOUMISSION_OPERATION_COUNT = NAVIGABLE_OPERATION_COUNT + 0;
+	int PAGE_SOUMISSION_OPERATION_COUNT = NAVIGABLE_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link mm2.impl.PageResultatImpl <em>Page Resultat</em>}' class.
@@ -479,13 +571,22 @@ public interface Mm2Package extends EPackage {
 	int QUESTION_FEATURE_COUNT = 5;
 
 	/**
+	 * The operation id for the '<em>Ennonce Pas Vide</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION___ENNONCE_PAS_VIDE__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
 	 * The number of operations of the '<em>Question</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int QUESTION_OPERATION_COUNT = 0;
+	int QUESTION_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link mm2.impl.ReponseImpl <em>Reponse</em>}' class.
@@ -525,13 +626,22 @@ public interface Mm2Package extends EPackage {
 	int REPONSE_FEATURE_COUNT = 2;
 
 	/**
+	 * The operation id for the '<em>Reponse Non Vide</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REPONSE___REPONSE_NON_VIDE__DIAGNOSTICCHAIN_MAP = 0;
+
+	/**
 	 * The number of operations of the '<em>Reponse</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REPONSE_OPERATION_COUNT = 0;
+	int REPONSE_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link mm2.impl.BoutonSoumettreImpl <em>Bouton Soumettre</em>}' class.
@@ -698,6 +808,56 @@ public interface Mm2Package extends EPackage {
 	EAttribute getQuestionnaire_RetourAutorise();
 
 	/**
+	 * Returns the meta object for the '{@link mm2.Questionnaire#boutonRetourInterdit(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Bouton Retour Interdit</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Bouton Retour Interdit</em>' operation.
+	 * @see mm2.Questionnaire#boutonRetourInterdit(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getQuestionnaire__BoutonRetourInterdit__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link mm2.Questionnaire#auMoinsUneSoumission(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Au Moins Une Soumission</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Au Moins Une Soumission</em>' operation.
+	 * @see mm2.Questionnaire#auMoinsUneSoumission(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getQuestionnaire__AuMoinsUneSoumission__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link mm2.Questionnaire#auMoinsUneResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Au Moins Une Result</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Au Moins Une Result</em>' operation.
+	 * @see mm2.Questionnaire#auMoinsUneResult(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getQuestionnaire__AuMoinsUneResult__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link mm2.Questionnaire#auMoinsUneQuestion(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Au Moins Une Question</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Au Moins Une Question</em>' operation.
+	 * @see mm2.Questionnaire#auMoinsUneQuestion(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getQuestionnaire__AuMoinsUneQuestion__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link mm2.Questionnaire#questionPrecedente(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Question Precedente</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Question Precedente</em>' operation.
+	 * @see mm2.Questionnaire#questionPrecedente(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getQuestionnaire__QuestionPrecedente__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link mm2.Page <em>Page</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -739,10 +899,10 @@ public interface Mm2Package extends EPackage {
 	EClass getNavigable();
 
 	/**
-	 * Returns the meta object for the reference '{@link mm2.Navigable#getPageSuivante <em>Page Suivante</em>}'.
+	 * Returns the meta object for the containment reference '{@link mm2.Navigable#getPageSuivante <em>Page Suivante</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Page Suivante</em>'.
+	 * @return the meta object for the containment reference '<em>Page Suivante</em>'.
 	 * @see mm2.Navigable#getPageSuivante()
 	 * @see #getNavigable()
 	 * @generated
@@ -750,10 +910,10 @@ public interface Mm2Package extends EPackage {
 	EReference getNavigable_PageSuivante();
 
 	/**
-	 * Returns the meta object for the reference '{@link mm2.Navigable#getPagePrecedente <em>Page Precedente</em>}'.
+	 * Returns the meta object for the containment reference '{@link mm2.Navigable#getPagePrecedente <em>Page Precedente</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Page Precedente</em>'.
+	 * @return the meta object for the containment reference '<em>Page Precedente</em>'.
 	 * @see mm2.Navigable#getPagePrecedente()
 	 * @see #getNavigable()
 	 * @generated
@@ -771,10 +931,10 @@ public interface Mm2Package extends EPackage {
 	EClass getPageQuestion();
 
 	/**
-	 * Returns the meta object for the reference '{@link mm2.PageQuestion#getQuestion <em>Question</em>}'.
+	 * Returns the meta object for the containment reference '{@link mm2.PageQuestion#getQuestion <em>Question</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Question</em>'.
+	 * @return the meta object for the containment reference '<em>Question</em>'.
 	 * @see mm2.PageQuestion#getQuestion()
 	 * @see #getPageQuestion()
 	 * @generated
@@ -782,10 +942,30 @@ public interface Mm2Package extends EPackage {
 	EReference getPageQuestion_Question();
 
 	/**
-	 * Returns the meta object for the reference '{@link mm2.PageQuestion#getBoutonSuivant <em>Bouton Suivant</em>}'.
+	 * Returns the meta object for the '{@link mm2.PageQuestion#btnRetour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Btn Retour</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Bouton Suivant</em>'.
+	 * @return the meta object for the '<em>Btn Retour</em>' operation.
+	 * @see mm2.PageQuestion#btnRetour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getPageQuestion__BtnRetour__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link mm2.PageQuestion#btnSuivant(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Btn Suivant</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Btn Suivant</em>' operation.
+	 * @see mm2.PageQuestion#btnSuivant(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getPageQuestion__BtnSuivant__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link mm2.PageQuestion#getBoutonSuivant <em>Bouton Suivant</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Bouton Suivant</em>'.
 	 * @see mm2.PageQuestion#getBoutonSuivant()
 	 * @see #getPageQuestion()
 	 * @generated
@@ -793,10 +973,10 @@ public interface Mm2Package extends EPackage {
 	EReference getPageQuestion_BoutonSuivant();
 
 	/**
-	 * Returns the meta object for the reference '{@link mm2.PageQuestion#getBoutonRetour <em>Bouton Retour</em>}'.
+	 * Returns the meta object for the containment reference '{@link mm2.PageQuestion#getBoutonRetour <em>Bouton Retour</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Bouton Retour</em>'.
+	 * @return the meta object for the containment reference '<em>Bouton Retour</em>'.
 	 * @see mm2.PageQuestion#getBoutonRetour()
 	 * @see #getPageQuestion()
 	 * @generated
@@ -814,15 +994,35 @@ public interface Mm2Package extends EPackage {
 	EClass getPageSoumission();
 
 	/**
-	 * Returns the meta object for the reference '{@link mm2.PageSoumission#getBoutonSoumettre <em>Bouton Soumettre</em>}'.
+	 * Returns the meta object for the containment reference '{@link mm2.PageSoumission#getBoutonSoumettre <em>Bouton Soumettre</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Bouton Soumettre</em>'.
+	 * @return the meta object for the containment reference '<em>Bouton Soumettre</em>'.
 	 * @see mm2.PageSoumission#getBoutonSoumettre()
 	 * @see #getPageSoumission()
 	 * @generated
 	 */
 	EReference getPageSoumission_BoutonSoumettre();
+
+	/**
+	 * Returns the meta object for the '{@link mm2.PageSoumission#btnRetour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Btn Retour</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Btn Retour</em>' operation.
+	 * @see mm2.PageSoumission#btnRetour(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getPageSoumission__BtnRetour__DiagnosticChain_Map();
+
+	/**
+	 * Returns the meta object for the '{@link mm2.PageSoumission#btnSuivant(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Btn Suivant</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Btn Suivant</em>' operation.
+	 * @see mm2.PageSoumission#btnSuivant(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getPageSoumission__BtnSuivant__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link mm2.PageSoumission#getQuestion <em>Question</em>}'.
@@ -834,6 +1034,17 @@ public interface Mm2Package extends EPackage {
 	 * @generated
 	 */
 	EReference getPageSoumission_Question();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link mm2.PageSoumission#getBoutonRetour <em>Bouton Retour</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Bouton Retour</em>'.
+	 * @see mm2.PageSoumission#getBoutonRetour()
+	 * @see #getPageSoumission()
+	 * @generated
+	 */
+	EReference getPageSoumission_BoutonRetour();
 
 	/**
 	 * Returns the meta object for class '{@link mm2.PageResultat <em>Page Resultat</em>}'.
@@ -911,6 +1122,16 @@ public interface Mm2Package extends EPackage {
 	EReference getQuestion_Etiquette();
 
 	/**
+	 * Returns the meta object for the '{@link mm2.Question#ennoncePasVide(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Ennonce Pas Vide</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Ennonce Pas Vide</em>' operation.
+	 * @see mm2.Question#ennoncePasVide(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getQuestion__EnnoncePasVide__DiagnosticChain_Map();
+
+	/**
 	 * Returns the meta object for class '{@link mm2.Reponse <em>Reponse</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -941,6 +1162,16 @@ public interface Mm2Package extends EPackage {
 	 * @generated
 	 */
 	EAttribute getReponse_EstVraie();
+
+	/**
+	 * Returns the meta object for the '{@link mm2.Reponse#reponseNonVide(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Reponse Non Vide</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Reponse Non Vide</em>' operation.
+	 * @see mm2.Reponse#reponseNonVide(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map)
+	 * @generated
+	 */
+	EOperation getReponse__ReponseNonVide__DiagnosticChain_Map();
 
 	/**
 	 * Returns the meta object for class '{@link mm2.BoutonSoumettre <em>Bouton Soumettre</em>}'.
@@ -1051,6 +1282,51 @@ public interface Mm2Package extends EPackage {
 		EAttribute QUESTIONNAIRE__RETOUR_AUTORISE = eINSTANCE.getQuestionnaire_RetourAutorise();
 
 		/**
+		 * The meta object literal for the '<em><b>Bouton Retour Interdit</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation QUESTIONNAIRE___BOUTON_RETOUR_INTERDIT__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getQuestionnaire__BoutonRetourInterdit__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Au Moins Une Soumission</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation QUESTIONNAIRE___AU_MOINS_UNE_SOUMISSION__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getQuestionnaire__AuMoinsUneSoumission__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Au Moins Une Result</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation QUESTIONNAIRE___AU_MOINS_UNE_RESULT__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getQuestionnaire__AuMoinsUneResult__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Au Moins Une Question</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation QUESTIONNAIRE___AU_MOINS_UNE_QUESTION__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getQuestionnaire__AuMoinsUneQuestion__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Question Precedente</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation QUESTIONNAIRE___QUESTION_PRECEDENTE__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getQuestionnaire__QuestionPrecedente__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link mm2.impl.PageImpl <em>Page</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1089,7 +1365,7 @@ public interface Mm2Package extends EPackage {
 		EClass NAVIGABLE = eINSTANCE.getNavigable();
 
 		/**
-		 * The meta object literal for the '<em><b>Page Suivante</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Page Suivante</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1097,7 +1373,7 @@ public interface Mm2Package extends EPackage {
 		EReference NAVIGABLE__PAGE_SUIVANTE = eINSTANCE.getNavigable_PageSuivante();
 
 		/**
-		 * The meta object literal for the '<em><b>Page Precedente</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Page Precedente</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1115,7 +1391,7 @@ public interface Mm2Package extends EPackage {
 		EClass PAGE_QUESTION = eINSTANCE.getPageQuestion();
 
 		/**
-		 * The meta object literal for the '<em><b>Question</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Question</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1123,7 +1399,25 @@ public interface Mm2Package extends EPackage {
 		EReference PAGE_QUESTION__QUESTION = eINSTANCE.getPageQuestion_Question();
 
 		/**
-		 * The meta object literal for the '<em><b>Bouton Suivant</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Btn Retour</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PAGE_QUESTION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getPageQuestion__BtnRetour__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Btn Suivant</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PAGE_QUESTION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getPageQuestion__BtnSuivant__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Bouton Suivant</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1131,7 +1425,7 @@ public interface Mm2Package extends EPackage {
 		EReference PAGE_QUESTION__BOUTON_SUIVANT = eINSTANCE.getPageQuestion_BoutonSuivant();
 
 		/**
-		 * The meta object literal for the '<em><b>Bouton Retour</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Bouton Retour</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1149,12 +1443,30 @@ public interface Mm2Package extends EPackage {
 		EClass PAGE_SOUMISSION = eINSTANCE.getPageSoumission();
 
 		/**
-		 * The meta object literal for the '<em><b>Bouton Soumettre</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Bouton Soumettre</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference PAGE_SOUMISSION__BOUTON_SOUMETTRE = eINSTANCE.getPageSoumission_BoutonSoumettre();
+
+		/**
+		 * The meta object literal for the '<em><b>Btn Retour</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PAGE_SOUMISSION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getPageSoumission__BtnRetour__DiagnosticChain_Map();
+
+		/**
+		 * The meta object literal for the '<em><b>Btn Suivant</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PAGE_SOUMISSION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getPageSoumission__BtnSuivant__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '<em><b>Question</b></em>' containment reference list feature.
@@ -1163,6 +1475,14 @@ public interface Mm2Package extends EPackage {
 		 * @generated
 		 */
 		EReference PAGE_SOUMISSION__QUESTION = eINSTANCE.getPageSoumission_Question();
+
+		/**
+		 * The meta object literal for the '<em><b>Bouton Retour</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAGE_SOUMISSION__BOUTON_RETOUR = eINSTANCE.getPageSoumission_BoutonRetour();
 
 		/**
 		 * The meta object literal for the '{@link mm2.impl.PageResultatImpl <em>Page Resultat</em>}' class.
@@ -1225,6 +1545,15 @@ public interface Mm2Package extends EPackage {
 		EReference QUESTION__ETIQUETTE = eINSTANCE.getQuestion_Etiquette();
 
 		/**
+		 * The meta object literal for the '<em><b>Ennonce Pas Vide</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation QUESTION___ENNONCE_PAS_VIDE__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getQuestion__EnnoncePasVide__DiagnosticChain_Map();
+
+		/**
 		 * The meta object literal for the '{@link mm2.impl.ReponseImpl <em>Reponse</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1249,6 +1578,15 @@ public interface Mm2Package extends EPackage {
 		 * @generated
 		 */
 		EAttribute REPONSE__EST_VRAIE = eINSTANCE.getReponse_EstVraie();
+
+		/**
+		 * The meta object literal for the '<em><b>Reponse Non Vide</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REPONSE___REPONSE_NON_VIDE__DIAGNOSTICCHAIN_MAP = eINSTANCE
+				.getReponse__ReponseNonVide__DiagnosticChain_Map();
 
 		/**
 		 * The meta object literal for the '{@link mm2.impl.BoutonSoumettreImpl <em>Bouton Soumettre</em>}' class.

@@ -12,5 +12,7 @@ Export-Package: mm2,
  mm2.impl,
  mm2.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.ocl.pivot;visibility:=reexport,
+ org.eclipse.ocl.examples.codegen;visibility:=reexport,
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy

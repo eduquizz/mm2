@@ -2,19 +2,43 @@
  */
 package mm2.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 import mm2.BoutonRetour;
 import mm2.BoutonSuivant;
 import mm2.Mm2Package;
+import mm2.Mm2Tables;
+import mm2.Navigable;
 import mm2.Page;
 import mm2.PageQuestion;
 import mm2.Question;
 
+import mm2.Questionnaire;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.DiagnosticChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.ocl.pivot.evaluation.Executor;
+import org.eclipse.ocl.pivot.ids.IdResolver;
+import org.eclipse.ocl.pivot.ids.TypeId;
+import org.eclipse.ocl.pivot.internal.library.UnboxedCompositionProperty;
+import org.eclipse.ocl.pivot.library.collection.CollectionIsEmptyOperation;
+import org.eclipse.ocl.pivot.library.collection.CollectionNotEmptyOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsSetOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclAnyOclAsTypeOperation;
+import org.eclipse.ocl.pivot.library.oclany.OclComparableLessThanEqualOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringGetSeverityOperation;
+import org.eclipse.ocl.pivot.library.string.CGStringLogDiagnosticOperation;
+import org.eclipse.ocl.pivot.utilities.PivotUtil;
+import org.eclipse.ocl.pivot.utilities.ValueUtil;
+import org.eclipse.ocl.pivot.values.IntegerValue;
+import org.eclipse.ocl.pivot.values.InvalidValueException;
+import org.eclipse.ocl.pivot.values.SetValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,8 +48,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link mm2.impl.PageQuestionImpl#getPageSuivante <em>Page Suivante</em>}</li>
  *   <li>{@link mm2.impl.PageQuestionImpl#getPagePrecedente <em>Page Precedente</em>}</li>
+ *   <li>{@link mm2.impl.PageQuestionImpl#getPageSuivante <em>Page Suivante</em>}</li>
  *   <li>{@link mm2.impl.PageQuestionImpl#getTitre <em>Titre</em>}</li>
  *   <li>{@link mm2.impl.PageQuestionImpl#getBoutonSuivant <em>Bouton Suivant</em>}</li>
  *   <li>{@link mm2.impl.PageQuestionImpl#getBoutonRetour <em>Bouton Retour</em>}</li>
@@ -36,17 +60,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class PageQuestionImpl extends MinimalEObjectImpl.Container implements PageQuestion {
 	/**
-	 * The cached value of the '{@link #getPageSuivante() <em>Page Suivante</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPageSuivante()
-	 * @generated
-	 * @ordered
-	 */
-	protected Page pageSuivante;
-
-	/**
-	 * The cached value of the '{@link #getPagePrecedente() <em>Page Precedente</em>}' reference.
+	 * The cached value of the '{@link #getPagePrecedente() <em>Page Precedente</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPagePrecedente()
@@ -54,6 +68,16 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 * @ordered
 	 */
 	protected Page pagePrecedente;
+
+	/**
+	 * The cached value of the '{@link #getPageSuivante() <em>Page Suivante</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPageSuivante()
+	 * @generated
+	 * @ordered
+	 */
+	protected Page pageSuivante;
 
 	/**
 	 * The default value of the '{@link #getTitre() <em>Titre</em>}' attribute.
@@ -76,7 +100,7 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	protected String titre = TITRE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getBoutonSuivant() <em>Bouton Suivant</em>}' reference.
+	 * The cached value of the '{@link #getBoutonSuivant() <em>Bouton Suivant</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBoutonSuivant()
@@ -86,7 +110,7 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	protected BoutonSuivant boutonSuivant;
 
 	/**
-	 * The cached value of the '{@link #getBoutonRetour() <em>Bouton Retour</em>}' reference.
+	 * The cached value of the '{@link #getBoutonRetour() <em>Bouton Retour</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getBoutonRetour()
@@ -96,7 +120,7 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	protected BoutonRetour boutonRetour;
 
 	/**
-	 * The cached value of the '{@link #getQuestion() <em>Question</em>}' reference.
+	 * The cached value of the '{@link #getQuestion() <em>Question</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getQuestion()
@@ -131,15 +155,6 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public Page getPageSuivante() {
-		if (pageSuivante != null && pageSuivante.eIsProxy()) {
-			InternalEObject oldPageSuivante = (InternalEObject) pageSuivante;
-			pageSuivante = (Page) eResolveProxy(oldPageSuivante);
-			if (pageSuivante != oldPageSuivante) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE,
-							oldPageSuivante, pageSuivante));
-			}
-		}
 		return pageSuivante;
 	}
 
@@ -148,8 +163,18 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Page basicGetPageSuivante() {
-		return pageSuivante;
+	public NotificationChain basicSetPageSuivante(Page newPageSuivante, NotificationChain msgs) {
+		Page oldPageSuivante = pageSuivante;
+		pageSuivante = newPageSuivante;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE, oldPageSuivante, newPageSuivante);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -159,11 +184,20 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public void setPageSuivante(Page newPageSuivante) {
-		Page oldPageSuivante = pageSuivante;
-		pageSuivante = newPageSuivante;
-		if (eNotificationRequired())
+		if (newPageSuivante != pageSuivante) {
+			NotificationChain msgs = null;
+			if (pageSuivante != null)
+				msgs = ((InternalEObject) pageSuivante).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE, null, msgs);
+			if (newPageSuivante != null)
+				msgs = ((InternalEObject) newPageSuivante).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE, null, msgs);
+			msgs = basicSetPageSuivante(newPageSuivante, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE,
-					oldPageSuivante, pageSuivante));
+					newPageSuivante, newPageSuivante));
 	}
 
 	/**
@@ -173,15 +207,6 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public Page getPagePrecedente() {
-		if (pagePrecedente != null && pagePrecedente.eIsProxy()) {
-			InternalEObject oldPagePrecedente = (InternalEObject) pagePrecedente;
-			pagePrecedente = (Page) eResolveProxy(oldPagePrecedente);
-			if (pagePrecedente != oldPagePrecedente) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE,
-							oldPagePrecedente, pagePrecedente));
-			}
-		}
 		return pagePrecedente;
 	}
 
@@ -190,8 +215,18 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Page basicGetPagePrecedente() {
-		return pagePrecedente;
+	public NotificationChain basicSetPagePrecedente(Page newPagePrecedente, NotificationChain msgs) {
+		Page oldPagePrecedente = pagePrecedente;
+		pagePrecedente = newPagePrecedente;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE, oldPagePrecedente, newPagePrecedente);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -201,11 +236,20 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public void setPagePrecedente(Page newPagePrecedente) {
-		Page oldPagePrecedente = pagePrecedente;
-		pagePrecedente = newPagePrecedente;
-		if (eNotificationRequired())
+		if (newPagePrecedente != pagePrecedente) {
+			NotificationChain msgs = null;
+			if (pagePrecedente != null)
+				msgs = ((InternalEObject) pagePrecedente).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE, null, msgs);
+			if (newPagePrecedente != null)
+				msgs = ((InternalEObject) newPagePrecedente).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE, null, msgs);
+			msgs = basicSetPagePrecedente(newPagePrecedente, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE,
-					oldPagePrecedente, pagePrecedente));
+					newPagePrecedente, newPagePrecedente));
 	}
 
 	/**
@@ -238,15 +282,6 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public Question getQuestion() {
-		if (question != null && question.eIsProxy()) {
-			InternalEObject oldQuestion = (InternalEObject) question;
-			question = (Question) eResolveProxy(oldQuestion);
-			if (question != oldQuestion) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Mm2Package.PAGE_QUESTION__QUESTION,
-							oldQuestion, question));
-			}
-		}
 		return question;
 	}
 
@@ -255,8 +290,18 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Question basicGetQuestion() {
-		return question;
+	public NotificationChain basicSetQuestion(Question newQuestion, NotificationChain msgs) {
+		Question oldQuestion = question;
+		question = newQuestion;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Mm2Package.PAGE_QUESTION__QUESTION, oldQuestion, newQuestion);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -266,11 +311,199 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public void setQuestion(Question newQuestion) {
-		Question oldQuestion = question;
-		question = newQuestion;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_QUESTION__QUESTION, oldQuestion,
-					question));
+		if (newQuestion != question) {
+			NotificationChain msgs = null;
+			if (question != null)
+				msgs = ((InternalEObject) question).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__QUESTION, null, msgs);
+			if (newQuestion != null)
+				msgs = ((InternalEObject) newQuestion).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__QUESTION, null, msgs);
+			msgs = basicSetQuestion(newQuestion, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_QUESTION__QUESTION, newQuestion,
+					newQuestion));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean btnRetour(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "PageQuestion::btnRetour";
+		try {
+			/**
+			 *
+			 * inv btnRetour:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[1] = if
+			 *           self->oclAsType(Page).Questionnaire.retourAutorise
+			 *         then self.boutonRetour->notEmpty()
+			 *         else self.boutonRetour->isEmpty()
+			 *         endif
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor,
+					Mm2Package.Literals.PAGE_QUESTION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE
+					.evaluate(executor, severity_0, Mm2Tables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			} else {
+				/*@Caught*/ Object CAUGHT_result;
+				try {
+					final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_mm2_c_c_Page = idResolver
+							.getClass(Mm2Tables.CLSSid_Page, null);
+					final /*@NonInvalid*/ UnboxedCompositionProperty IMPPROPid_page = new UnboxedCompositionProperty(
+							Mm2Tables.PROPid_page);
+					final /*@NonInvalid*/ BoutonRetour boutonRetour_0 = this.getBoutonRetour();
+					final /*@Thrown*/ SetValue oclAsSet_1 = OclAnyOclAsSetOperation.INSTANCE.evaluate(executor,
+							Mm2Tables.SET_CLSSid_BoutonRetour, boutonRetour_0);
+					final /*@NonInvalid*/ SetValue oclAsSet = OclAnyOclAsSetOperation.INSTANCE.evaluate(executor,
+							Mm2Tables.SET_CLSSid_PageQuestion, this);
+					final /*@Thrown*/ Page oclAsType = (Page) OclAnyOclAsTypeOperation.INSTANCE.evaluate(executor,
+							oclAsSet, TYP_mm2_c_c_Page);
+					final /*@Thrown*/ Questionnaire Questionnaire = (Questionnaire) IMPPROPid_page.evaluate(executor,
+							Mm2Tables.CLSSid_Questionnaire, oclAsType);
+					if (Questionnaire == null) {
+						throw new InvalidValueException(
+								"Null source for \'\'http://www.example.org/mm2\'::Questionnaire::retourAutorise\'");
+					}
+					final /*@Thrown*/ boolean retourAutorise = Questionnaire.isRetourAutorise();
+					/*@Thrown*/ boolean result;
+					if (retourAutorise) {
+						final /*@Thrown*/ boolean notEmpty = CollectionNotEmptyOperation.INSTANCE.evaluate(oclAsSet_1)
+								.booleanValue();
+						result = notEmpty;
+					} else {
+						final /*@Thrown*/ boolean isEmpty = CollectionIsEmptyOperation.INSTANCE.evaluate(oclAsSet_1)
+								.booleanValue();
+						result = isEmpty;
+					}
+					CAUGHT_result = result;
+				} catch (Exception e) {
+					CAUGHT_result = ValueUtil.createInvalidValue(e);
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE
+						.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object) null, diagnostics, context,
+								(Object) null, severity_0, CAUGHT_result, Mm2Tables.INT_0)
+						.booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		} catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean btnSuivant(final DiagnosticChain diagnostics, final Map<Object, Object> context) {
+		final String constraintName = "PageQuestion::btnSuivant";
+		try {
+			/**
+			 *
+			 * inv btnSuivant:
+			 *   let severity : Integer[1] = constraintName.getSeverity()
+			 *   in
+			 *     if severity <= 0
+			 *     then true
+			 *     else
+			 *       let
+			 *         result : Boolean[1] = if
+			 *           self->oclAsType(Navigable)
+			 *           .pageSuivante->notEmpty()
+			 *         then self.boutonSuivant->isEmpty()
+			 *         else self.boutonSuivant->notEmpty()
+			 *         endif
+			 *       in
+			 *         constraintName.logDiagnostic(self, null, diagnostics, context, null, severity, result, 0)
+			 *     endif
+			 */
+			final /*@NonInvalid*/ Executor executor = PivotUtil.getExecutor(this);
+			final /*@NonInvalid*/ IdResolver idResolver = executor.getIdResolver();
+			final /*@NonInvalid*/ IntegerValue severity_0 = CGStringGetSeverityOperation.INSTANCE.evaluate(executor,
+					Mm2Package.Literals.PAGE_QUESTION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP);
+			final /*@NonInvalid*/ boolean le = OclComparableLessThanEqualOperation.INSTANCE
+					.evaluate(executor, severity_0, Mm2Tables.INT_0).booleanValue();
+			/*@NonInvalid*/ boolean IF_le;
+			if (le) {
+				IF_le = true;
+			} else {
+				final /*@NonInvalid*/ org.eclipse.ocl.pivot.Class TYP_mm2_c_c_Navigable_0 = idResolver
+						.getClass(Mm2Tables.CLSSid_Navigable, null);
+				final /*@NonInvalid*/ BoutonSuivant boutonSuivant_0 = this.getBoutonSuivant();
+				final /*@NonInvalid*/ SetValue oclAsSet_2 = OclAnyOclAsSetOperation.INSTANCE.evaluate(executor,
+						Mm2Tables.SET_CLSSid_BoutonSuivant, boutonSuivant_0);
+				final /*@NonInvalid*/ SetValue oclAsSet = OclAnyOclAsSetOperation.INSTANCE.evaluate(executor,
+						Mm2Tables.SET_CLSSid_PageQuestion, this);
+				final /*@Thrown*/ Navigable oclAsType = (Navigable) OclAnyOclAsTypeOperation.INSTANCE.evaluate(executor,
+						oclAsSet, TYP_mm2_c_c_Navigable_0);
+				final /*@Thrown*/ Page pageSuivante = oclAsType.getPageSuivante();
+				final /*@Thrown*/ SetValue oclAsSet_0 = OclAnyOclAsSetOperation.INSTANCE.evaluate(executor,
+						Mm2Tables.SET_CLSSid_Page, pageSuivante);
+				final /*@Thrown*/ boolean notEmpty = CollectionNotEmptyOperation.INSTANCE.evaluate(oclAsSet_0)
+						.booleanValue();
+				/*@NonInvalid*/ boolean result;
+				if (notEmpty) {
+					final /*@NonInvalid*/ boolean isEmpty = CollectionIsEmptyOperation.INSTANCE.evaluate(oclAsSet_2)
+							.booleanValue();
+					result = isEmpty;
+				} else {
+					final /*@NonInvalid*/ boolean notEmpty_0 = CollectionNotEmptyOperation.INSTANCE.evaluate(oclAsSet_2)
+							.booleanValue();
+					result = notEmpty_0;
+				}
+				final /*@NonInvalid*/ boolean logDiagnostic = CGStringLogDiagnosticOperation.INSTANCE
+						.evaluate(executor, TypeId.BOOLEAN, constraintName, this, (Object) null, diagnostics, context,
+								(Object) null, severity_0, result, Mm2Tables.INT_0)
+						.booleanValue();
+				IF_le = logDiagnostic;
+			}
+			return IF_le;
+		} catch (Throwable e) {
+			return ValueUtil.validationFailedDiagnostic(constraintName, this, diagnostics, context, e);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE:
+			return basicSetPagePrecedente(null, msgs);
+		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
+			return basicSetPageSuivante(null, msgs);
+		case Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT:
+			return basicSetBoutonSuivant(null, msgs);
+		case Mm2Package.PAGE_QUESTION__BOUTON_RETOUR:
+			return basicSetBoutonRetour(null, msgs);
+		case Mm2Package.PAGE_QUESTION__QUESTION:
+			return basicSetQuestion(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -280,15 +513,6 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public BoutonSuivant getBoutonSuivant() {
-		if (boutonSuivant != null && boutonSuivant.eIsProxy()) {
-			InternalEObject oldBoutonSuivant = (InternalEObject) boutonSuivant;
-			boutonSuivant = (BoutonSuivant) eResolveProxy(oldBoutonSuivant);
-			if (boutonSuivant != oldBoutonSuivant) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT,
-							oldBoutonSuivant, boutonSuivant));
-			}
-		}
 		return boutonSuivant;
 	}
 
@@ -297,8 +521,18 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BoutonSuivant basicGetBoutonSuivant() {
-		return boutonSuivant;
+	public NotificationChain basicSetBoutonSuivant(BoutonSuivant newBoutonSuivant, NotificationChain msgs) {
+		BoutonSuivant oldBoutonSuivant = boutonSuivant;
+		boutonSuivant = newBoutonSuivant;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT, oldBoutonSuivant, newBoutonSuivant);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -308,11 +542,20 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public void setBoutonSuivant(BoutonSuivant newBoutonSuivant) {
-		BoutonSuivant oldBoutonSuivant = boutonSuivant;
-		boutonSuivant = newBoutonSuivant;
-		if (eNotificationRequired())
+		if (newBoutonSuivant != boutonSuivant) {
+			NotificationChain msgs = null;
+			if (boutonSuivant != null)
+				msgs = ((InternalEObject) boutonSuivant).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT, null, msgs);
+			if (newBoutonSuivant != null)
+				msgs = ((InternalEObject) newBoutonSuivant).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT, null, msgs);
+			msgs = basicSetBoutonSuivant(newBoutonSuivant, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT,
-					oldBoutonSuivant, boutonSuivant));
+					newBoutonSuivant, newBoutonSuivant));
 	}
 
 	/**
@@ -322,15 +565,6 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public BoutonRetour getBoutonRetour() {
-		if (boutonRetour != null && boutonRetour.eIsProxy()) {
-			InternalEObject oldBoutonRetour = (InternalEObject) boutonRetour;
-			boutonRetour = (BoutonRetour) eResolveProxy(oldBoutonRetour);
-			if (boutonRetour != oldBoutonRetour) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Mm2Package.PAGE_QUESTION__BOUTON_RETOUR,
-							oldBoutonRetour, boutonRetour));
-			}
-		}
 		return boutonRetour;
 	}
 
@@ -339,8 +573,18 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BoutonRetour basicGetBoutonRetour() {
-		return boutonRetour;
+	public NotificationChain basicSetBoutonRetour(BoutonRetour newBoutonRetour, NotificationChain msgs) {
+		BoutonRetour oldBoutonRetour = boutonRetour;
+		boutonRetour = newBoutonRetour;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Mm2Package.PAGE_QUESTION__BOUTON_RETOUR, oldBoutonRetour, newBoutonRetour);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -350,11 +594,20 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public void setBoutonRetour(BoutonRetour newBoutonRetour) {
-		BoutonRetour oldBoutonRetour = boutonRetour;
-		boutonRetour = newBoutonRetour;
-		if (eNotificationRequired())
+		if (newBoutonRetour != boutonRetour) {
+			NotificationChain msgs = null;
+			if (boutonRetour != null)
+				msgs = ((InternalEObject) boutonRetour).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__BOUTON_RETOUR, null, msgs);
+			if (newBoutonRetour != null)
+				msgs = ((InternalEObject) newBoutonRetour).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__BOUTON_RETOUR, null, msgs);
+			msgs = basicSetBoutonRetour(newBoutonRetour, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_QUESTION__BOUTON_RETOUR,
-					oldBoutonRetour, boutonRetour));
+					newBoutonRetour, newBoutonRetour));
 	}
 
 	/**
@@ -365,28 +618,18 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
-			if (resolve)
-				return getPageSuivante();
-			return basicGetPageSuivante();
 		case Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE:
-			if (resolve)
-				return getPagePrecedente();
-			return basicGetPagePrecedente();
+			return getPagePrecedente();
+		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
+			return getPageSuivante();
 		case Mm2Package.PAGE_QUESTION__TITRE:
 			return getTitre();
 		case Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT:
-			if (resolve)
-				return getBoutonSuivant();
-			return basicGetBoutonSuivant();
+			return getBoutonSuivant();
 		case Mm2Package.PAGE_QUESTION__BOUTON_RETOUR:
-			if (resolve)
-				return getBoutonRetour();
-			return basicGetBoutonRetour();
+			return getBoutonRetour();
 		case Mm2Package.PAGE_QUESTION__QUESTION:
-			if (resolve)
-				return getQuestion();
-			return basicGetQuestion();
+			return getQuestion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -399,11 +642,11 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
-			setPageSuivante((Page) newValue);
-			return;
 		case Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE:
 			setPagePrecedente((Page) newValue);
+			return;
+		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
+			setPageSuivante((Page) newValue);
 			return;
 		case Mm2Package.PAGE_QUESTION__TITRE:
 			setTitre((String) newValue);
@@ -429,11 +672,11 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
-			setPageSuivante((Page) null);
-			return;
 		case Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE:
 			setPagePrecedente((Page) null);
+			return;
+		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
+			setPageSuivante((Page) null);
 			return;
 		case Mm2Package.PAGE_QUESTION__TITRE:
 			setTitre(TITRE_EDEFAULT);
@@ -459,10 +702,10 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
-			return pageSuivante != null;
 		case Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE:
 			return pagePrecedente != null;
+		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
+			return pageSuivante != null;
 		case Mm2Package.PAGE_QUESTION__TITRE:
 			return TITRE_EDEFAULT == null ? titre != null : !TITRE_EDEFAULT.equals(titre);
 		case Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT:
@@ -509,6 +752,23 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+		case Mm2Package.PAGE_QUESTION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP:
+			return btnRetour((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+		case Mm2Package.PAGE_QUESTION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP:
+			return btnSuivant((DiagnosticChain) arguments.get(0), (Map<Object, Object>) arguments.get(1));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

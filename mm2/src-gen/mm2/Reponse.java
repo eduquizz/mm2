@@ -2,6 +2,8 @@
  */
 package mm2;
 
+import java.util.Map;
+import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see mm2.Mm2Package#getReponse()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='reponseNonVide'"
  * @generated
  */
 public interface Reponse extends EObject {
@@ -51,7 +53,7 @@ public interface Reponse extends EObject {
 	 * @return the value of the '<em>Est Vraie</em>' attribute.
 	 * @see #setEstVraie(boolean)
 	 * @see mm2.Mm2Package#getReponse_EstVraie()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	boolean isEstVraie();
@@ -65,5 +67,13 @@ public interface Reponse extends EObject {
 	 * @generated
 	 */
 	void setEstVraie(boolean value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot body='texte-&gt;notEmpty()'"
+	 * @generated
+	 */
+	boolean reponseNonVide(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 } // Reponse
