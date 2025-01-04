@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src-gen"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="mm2/src-gen"/>
+	<classpathentry kind="src" path="mm2.edit/src-gen"/>
+	<classpathentry kind="src" path="mm2.editor/src-gen"/>
+	<classpathentry kind="lib" path="/home/morgan/Documents/apps/eclipse-modeling-2024-09-R-linux-gtk-x86_64/eclipse/plugins/org.eclipse.jface_3.35.0.v20240820-2045.jar" sourcepath="/home/morgan/Documents/apps/eclipse-modeling-2024-09-R-linux-gtk-x86_64/eclipse/plugins/org.eclipse.jface.source_3.35.0.v20240820-2045.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/morgan/Documents/apps/eclipse-modeling-2024-09-R-linux-gtk-x86_64/eclipse/plugins/org.eclipse.platform.doc.isv_4.33.0.v20240827-0447.jar!/reference/api"/>
+		</attributes>
+		<accessrules>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/action/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/action/images/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/bindings/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/bindings/keys/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/bindings/keys/formatting/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/commands/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/contexts/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/dialogs/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/dialogs/images/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/fieldassist/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/fieldassist/images/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/images/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/jface/internal/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/jface/internal/provisional/action/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/layout/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/menus/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/operation/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/preference/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/preference/images/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/resource/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/util/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/viewers/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/viewers/deferred/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/jface/viewers/internal/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/widgets/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/window/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/wizard/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/jface/wizard/images/*"/>
+			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/morgan/Documents/apps/eclipse-modeling-2024-09-R-linux-gtk-x86_64/eclipse/plugins/org.eclipse.emf.edit.ui_2.24.0.v20240604-0832.jar" sourcepath="/home/morgan/Documents/apps/eclipse-modeling-2024-09-R-linux-gtk-x86_64/eclipse/plugins/org.eclipse.emf.edit.ui.source_2.24.0.v20240604-0832.jar">
+		<accessrules>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/edit/ui/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/edit/ui/action/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/edit/ui/celleditor/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/edit/ui/dnd/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/edit/ui/provider/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/edit/ui/util/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/edit/ui/view/*"/>
+			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
+		</accessrules>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

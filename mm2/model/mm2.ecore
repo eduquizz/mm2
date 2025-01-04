@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mm2" nsURI="http://www.example.org/mm2" nsPrefix="mm2">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="Questionnaire">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="auMoinsUneQuestion auMoinsUneSoumission auMoinsUneResult questionPrecedente boutonRetourInterdit"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="auMoinsUneQuestion" value="page->exists(p | p.oclIsTypeOf(PageQuestion))"/>
+      <details key="auMoinsUneSoumission" value="page->exists(p | p.oclIsTypeOf(PageSoumission))"/>
+      <details key="auMoinsUneResult" value="page->exists(p | p.oclIsTypeOf(PageResultat))"/>
+      <details key="questionPrecedente" value="self.page->forAll(p | &#xA;        (p.oclIsTypeOf(PageQuestion) and not self.retourAutorise) &#xA;        implies &#xA;        (p.oclIsKindOf(Navigable) and p.oclAsType(Navigable).pagePrecedente->isEmpty()))"/>
+      <details key="boutonRetourInterdit" value="&#xA;&#x9;    self.retourAutorise = false implies &#xA;&#x9;    self.page->forAll(p |&#xA;&#x9;        p.oclIsTypeOf(PageQuestion) implies p.oclAsType(PageQuestion).boutonRetour->isEmpty()&#xA;&#x9;    )"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="page" lowerBound="1" upperBound="-1"
         eType="#//Page" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="nom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retourAutorise" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retourAutorise" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Page" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="titre" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -17,6 +35,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="pagePrecedente" eType="#//Page"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PageQuestion" eSuperTypes="#//Navigable #//Page">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="btnSuivant btnRetour"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="btnSuivant" value="if(self->oclAsType(Navigable).pageSuivante->notEmpty()) then self.boutonSuivant->isEmpty() else self.boutonSuivant->notEmpty() endif"/>
+      <details key="btnRetour" value="if (self->oclAsType(Page).Questionnaire.retourAutorise) then self.boutonRetour->notEmpty() else self.boutonRetour->isEmpty() endif"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="boutonSuivant" lowerBound="1"
         eType="#//BoutonSuivant"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="boutonRetour" eType="#//BoutonRetour"/>
@@ -24,24 +49,47 @@
         eType="#//Question"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PageSoumission" eSuperTypes="#//Navigable #//Page">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="btnSuivant btnRetour"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="btnSuivant" value="self.pageSuivante->isEmpty()"/>
+      <details key="btnRetour" value="if (self->oclAsType(Page).Questionnaire.retourAutorise) then self.boutonRetour->notEmpty() else self.boutonRetour->isEmpty() endif"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="boutonSoumettre" lowerBound="1"
         eType="#//BoutonSoumettre"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="question" lowerBound="1"
         upperBound="-1" eType="#//Question" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="boutonRetour" eType="#//BoutonRetour"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PageResultat" eSuperTypes="#//Page"/>
   <eClassifiers xsi:type="ecore:EClass" name="Question">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="ennoncePasVide"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="ennoncePasVide" value="ennonce->notEmpty()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="reponse" lowerBound="2"
         upperBound="-1" eType="#//Reponse" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ennonce" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="difficulte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reponsesMultiples" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="difficulte" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reponsesMultiples" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="etiquette" upperBound="-1"
         eType="#//Etiquette" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reponse">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="reponseNonVide"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="reponseNonVide" value="texte->notEmpty()"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="texte" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estVraie" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="estVraie" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BoutonSoumettre" eSuperTypes="#//Bouton"/>
   <eClassifiers xsi:type="ecore:EClass" name="BoutonSuivant" eSuperTypes="#//Bouton"/>

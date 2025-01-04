@@ -29,6 +29,7 @@
     <genClasses ecoreClass="mm2.ecore#//PageSoumission">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/boutonSoumettre"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/question"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mm2.ecore#//PageSoumission/boutonRetour"/>
     </genClasses>
     <genClasses ecoreClass="mm2.ecore#//PageResultat"/>
     <genClasses ecoreClass="mm2.ecore#//Question">
