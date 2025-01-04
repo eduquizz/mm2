@@ -24,17 +24,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface Navigable extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Page Suivante</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link mm2.Navigable#getPagePrecedente <em>Page Precedente</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Page Suivante</em>' reference.
-	 * @see #setPageSuivante(Navigable)
+	 * @see #setPageSuivante(Page)
 	 * @see mm2.Mm2Package#getNavigable_PageSuivante()
-	 * @see mm2.Navigable#getPagePrecedente
-	 * @model opposite="pagePrecedente"
+	 * @model
 	 * @generated
 	 */
-	Navigable getPageSuivante();
+	Page getPageSuivante();
 
 	/**
 	 * Sets the value of the '{@link mm2.Navigable#getPageSuivante <em>Page Suivante</em>}' reference.
@@ -44,21 +42,19 @@ public interface Navigable extends EObject {
 	 * @see #getPageSuivante()
 	 * @generated
 	 */
-	void setPageSuivante(Navigable value);
+	void setPageSuivante(Page value);
 
 	/**
 	 * Returns the value of the '<em><b>Page Precedente</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link mm2.Navigable#getPageSuivante <em>Page Suivante</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Page Precedente</em>' reference.
-	 * @see #setPagePrecedente(Navigable)
+	 * @see #setPagePrecedente(Page)
 	 * @see mm2.Mm2Package#getNavigable_PagePrecedente()
-	 * @see mm2.Navigable#getPageSuivante
-	 * @model opposite="pageSuivante"
+	 * @model
 	 * @generated
 	 */
-	Navigable getPagePrecedente();
+	Page getPagePrecedente();
 
 	/**
 	 * Sets the value of the '{@link mm2.Navigable#getPagePrecedente <em>Page Precedente</em>}' reference.
@@ -68,6 +64,6 @@ public interface Navigable extends EObject {
 	 * @see #getPagePrecedente()
 	 * @generated
 	 */
-	void setPagePrecedente(Navigable value);
+	void setPagePrecedente(Page value);
 
 } // Navigable

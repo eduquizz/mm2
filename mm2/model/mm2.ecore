@@ -13,10 +13,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Bouton" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Navigable" abstract="true" interface="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pageSuivante" eType="#//Navigable"
-        eOpposite="#//Navigable/pagePrecedente"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pagePrecedente" eType="#//Navigable"
-        eOpposite="#//Navigable/pageSuivante"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pageSuivante" eType="#//Page"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pagePrecedente" eType="#//Page"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PageQuestion" eSuperTypes="#//Navigable #//Page">
     <eStructuralFeatures xsi:type="ecore:EReference" name="boutonSuivant" lowerBound="1"

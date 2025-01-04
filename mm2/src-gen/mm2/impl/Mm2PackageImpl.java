@@ -641,12 +641,12 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 
 		initEClass(navigableEClass, Navigable.class, "Navigable", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNavigable_PageSuivante(), this.getNavigable(), this.getNavigable_PagePrecedente(),
-				"pageSuivante", null, 0, 1, Navigable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNavigable_PagePrecedente(), this.getNavigable(), this.getNavigable_PageSuivante(),
-				"pagePrecedente", null, 0, 1, Navigable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNavigable_PageSuivante(), this.getPage(), null, "pageSuivante", null, 0, 1, Navigable.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNavigable_PagePrecedente(), this.getPage(), null, "pagePrecedente", null, 0, 1,
+				Navigable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pageQuestionEClass, PageQuestion.class, "PageQuestion", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
