@@ -426,7 +426,7 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 */
 	@Override
 	public EReference getPageSoumission_BoutonSoumettre() {
-		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(2);
+		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -456,7 +456,7 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 */
 	@Override
 	public EReference getPageSoumission_Question() {
-		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(0);
+		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -466,7 +466,7 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 	 */
 	@Override
 	public EReference getPageSoumission_BoutonRetour() {
-		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(1);
+		return (EReference) pageSoumissionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -696,9 +696,9 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		createEOperation(pageQuestionEClass, PAGE_QUESTION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP);
 
 		pageSoumissionEClass = createEClass(PAGE_SOUMISSION);
-		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__QUESTION);
 		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__BOUTON_RETOUR);
 		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__BOUTON_SOUMETTRE);
+		createEReference(pageSoumissionEClass, PAGE_SOUMISSION__QUESTION);
 		createEOperation(pageSoumissionEClass, PAGE_SOUMISSION___BTN_RETOUR__DIAGNOSTICCHAIN_MAP);
 		createEOperation(pageSoumissionEClass, PAGE_SOUMISSION___BTN_SUIVANT__DIAGNOSTICCHAIN_MAP);
 
@@ -773,7 +773,7 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getQuestionnaire_Nom(), ecorePackage.getEString(), "nom", null, 0, 1, Questionnaire.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getQuestionnaire_RetourAutorise(), ecorePackage.getEBoolean(), "retourAutorise", "true", 0, 1,
+		initEAttribute(getQuestionnaire_RetourAutorise(), ecorePackage.getEBoolean(), "retourAutorise", "true", 1, 1,
 				Questionnaire.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
@@ -836,10 +836,10 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 		initEClass(navigableEClass, Navigable.class, "Navigable", IS_ABSTRACT, IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNavigable_PagePrecedente(), this.getPage(), null, "pagePrecedente", null, 0, 1,
-				Navigable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				Navigable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNavigable_PageSuivante(), this.getPage(), null, "pageSuivante", null, 0, 1, Navigable.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
 				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pageQuestionEClass, PageQuestion.class, "PageQuestion", !IS_ABSTRACT, !IS_INTERFACE,
@@ -876,14 +876,14 @@ public class Mm2PackageImpl extends EPackageImpl implements Mm2Package {
 
 		initEClass(pageSoumissionEClass, PageSoumission.class, "PageSoumission", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPageSoumission_Question(), this.getQuestion(), null, "question", null, 1, -1,
-				PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPageSoumission_BoutonRetour(), this.getBoutonRetour(), null, "boutonRetour", null, 0, 1,
 				PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPageSoumission_BoutonSoumettre(), this.getBoutonSoumettre(), null, "boutonSoumettre", null, 1,
 				1, PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPageSoumission_Question(), this.getQuestion(), null, "question", null, 1, -1,
+				PageSoumission.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getPageSoumission__BtnRetour__DiagnosticChain_Map(), ecorePackage.getEBoolean(),

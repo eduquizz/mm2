@@ -81,6 +81,8 @@ public class Mm2Tables extends AbstractTables
 	public static final /*@NonInvalid*/ DataTypeId DATAid_EInt = Mm2Tables.PACKid_http_c_s_s_www_eclipse_org_s_emf_s_2002_s_Ecore.getDataTypeId("EInt", 0);
 	public static final /*@NonInvalid*/ IntegerValue INT_0 = ValueUtil.integerValueOf("0");
 	public static final /*@NonInvalid*/ CollectionTypeId SET_PRIMid_String = TypeId.SET.getSpecializedId(TypeId.STRING, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_Navigable = TypeId.BAG.getSpecializedId(Mm2Tables.CLSSid_Navigable, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
+	public static final /*@NonInvalid*/ CollectionTypeId BAG_CLSSid_PageSoumission = TypeId.BAG.getSpecializedId(Mm2Tables.CLSSid_PageSoumission, false, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Etiquette = TypeId.ORDERED_SET.getSpecializedId(Mm2Tables.CLSSid_Etiquette, true, ValueUtil.ZERO_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Page = TypeId.ORDERED_SET.getSpecializedId(Mm2Tables.CLSSid_Page, true, ValueUtil.ONE_VALUE, ValueUtil.UNLIMITED_VALUE);
 	public static final /*@NonInvalid*/ CollectionTypeId ORD_CLSSid_Question = TypeId.ORDERED_SET.getSpecializedId(Mm2Tables.CLSSid_Question, true, ValueUtil.ONE_VALUE, ValueUtil.UNLIMITED_VALUE);

@@ -23,44 +23,44 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Navigable extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Page Suivante</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Page Suivante</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Page Suivante</em>' containment reference.
+	 * @return the value of the '<em>Page Suivante</em>' reference.
 	 * @see #setPageSuivante(Page)
 	 * @see mm2.Mm2Package#getNavigable_PageSuivante()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	Page getPageSuivante();
 
 	/**
-	 * Sets the value of the '{@link mm2.Navigable#getPageSuivante <em>Page Suivante</em>}' containment reference.
+	 * Sets the value of the '{@link mm2.Navigable#getPageSuivante <em>Page Suivante</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Page Suivante</em>' containment reference.
+	 * @param value the new value of the '<em>Page Suivante</em>' reference.
 	 * @see #getPageSuivante()
 	 * @generated
 	 */
 	void setPageSuivante(Page value);
 
 	/**
-	 * Returns the value of the '<em><b>Page Precedente</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Page Precedente</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Page Precedente</em>' containment reference.
+	 * @return the value of the '<em>Page Precedente</em>' reference.
 	 * @see #setPagePrecedente(Page)
 	 * @see mm2.Mm2Package#getNavigable_PagePrecedente()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	Page getPagePrecedente();
 
 	/**
-	 * Sets the value of the '{@link mm2.Navigable#getPagePrecedente <em>Page Precedente</em>}' containment reference.
+	 * Sets the value of the '{@link mm2.Navigable#getPagePrecedente <em>Page Precedente</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Page Precedente</em>' containment reference.
+	 * @param value the new value of the '<em>Page Precedente</em>' reference.
 	 * @see #getPagePrecedente()
 	 * @generated
 	 */

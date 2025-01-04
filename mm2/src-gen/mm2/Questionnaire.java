@@ -69,7 +69,7 @@ public interface Questionnaire extends EObject {
 	 * @return the value of the '<em>Retour Autorise</em>' attribute.
 	 * @see #setRetourAutorise(boolean)
 	 * @see mm2.Mm2Package#getQuestionnaire_RetourAutorise()
-	 * @model default="true"
+	 * @model default="true" required="true"
 	 * @generated
 	 */
 	boolean isRetourAutorise();

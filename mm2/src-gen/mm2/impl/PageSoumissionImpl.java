@@ -24,8 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.ocl.pivot.evaluation.Executor;
 import org.eclipse.ocl.pivot.ids.IdResolver;
 import org.eclipse.ocl.pivot.ids.TypeId;
@@ -54,16 +53,16 @@ import org.eclipse.ocl.pivot.values.SetValue;
  *   <li>{@link mm2.impl.PageSoumissionImpl#getPagePrecedente <em>Page Precedente</em>}</li>
  *   <li>{@link mm2.impl.PageSoumissionImpl#getPageSuivante <em>Page Suivante</em>}</li>
  *   <li>{@link mm2.impl.PageSoumissionImpl#getTitre <em>Titre</em>}</li>
- *   <li>{@link mm2.impl.PageSoumissionImpl#getQuestion <em>Question</em>}</li>
  *   <li>{@link mm2.impl.PageSoumissionImpl#getBoutonRetour <em>Bouton Retour</em>}</li>
  *   <li>{@link mm2.impl.PageSoumissionImpl#getBoutonSoumettre <em>Bouton Soumettre</em>}</li>
+ *   <li>{@link mm2.impl.PageSoumissionImpl#getQuestion <em>Question</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements PageSoumission {
 	/**
-	 * The cached value of the '{@link #getPagePrecedente() <em>Page Precedente</em>}' containment reference.
+	 * The cached value of the '{@link #getPagePrecedente() <em>Page Precedente</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPagePrecedente()
@@ -73,7 +72,7 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	protected Page pagePrecedente;
 
 	/**
-	 * The cached value of the '{@link #getPageSuivante() <em>Page Suivante</em>}' containment reference.
+	 * The cached value of the '{@link #getPageSuivante() <em>Page Suivante</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPageSuivante()
@@ -103,16 +102,6 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	protected String titre = TITRE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getQuestion() <em>Question</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQuestion()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Question> question;
-
-	/**
 	 * The cached value of the '{@link #getBoutonRetour() <em>Bouton Retour</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,6 +120,16 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected BoutonSoumettre boutonSoumettre;
+
+	/**
+	 * The cached value of the '{@link #getQuestion() <em>Question</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getQuestion()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Question> question;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -158,6 +157,15 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public Page getPageSuivante() {
+		if (pageSuivante != null && pageSuivante.eIsProxy()) {
+			InternalEObject oldPageSuivante = (InternalEObject) pageSuivante;
+			pageSuivante = (Page) eResolveProxy(oldPageSuivante);
+			if (pageSuivante != oldPageSuivante) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Mm2Package.PAGE_SOUMISSION__PAGE_SUIVANTE,
+							oldPageSuivante, pageSuivante));
+			}
+		}
 		return pageSuivante;
 	}
 
@@ -166,18 +174,8 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPageSuivante(Page newPageSuivante, NotificationChain msgs) {
-		Page oldPageSuivante = pageSuivante;
-		pageSuivante = newPageSuivante;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					Mm2Package.PAGE_SOUMISSION__PAGE_SUIVANTE, oldPageSuivante, newPageSuivante);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
+	public Page basicGetPageSuivante() {
+		return pageSuivante;
 	}
 
 	/**
@@ -187,20 +185,11 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public void setPageSuivante(Page newPageSuivante) {
-		if (newPageSuivante != pageSuivante) {
-			NotificationChain msgs = null;
-			if (pageSuivante != null)
-				msgs = ((InternalEObject) pageSuivante).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_SOUMISSION__PAGE_SUIVANTE, null, msgs);
-			if (newPageSuivante != null)
-				msgs = ((InternalEObject) newPageSuivante).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_SOUMISSION__PAGE_SUIVANTE, null, msgs);
-			msgs = basicSetPageSuivante(newPageSuivante, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		Page oldPageSuivante = pageSuivante;
+		pageSuivante = newPageSuivante;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_SOUMISSION__PAGE_SUIVANTE,
-					newPageSuivante, newPageSuivante));
+					oldPageSuivante, pageSuivante));
 	}
 
 	/**
@@ -210,6 +199,15 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public Page getPagePrecedente() {
+		if (pagePrecedente != null && pagePrecedente.eIsProxy()) {
+			InternalEObject oldPagePrecedente = (InternalEObject) pagePrecedente;
+			pagePrecedente = (Page) eResolveProxy(oldPagePrecedente);
+			if (pagePrecedente != oldPagePrecedente) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Mm2Package.PAGE_SOUMISSION__PAGE_PRECEDENTE, oldPagePrecedente, pagePrecedente));
+			}
+		}
 		return pagePrecedente;
 	}
 
@@ -218,18 +216,8 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPagePrecedente(Page newPagePrecedente, NotificationChain msgs) {
-		Page oldPagePrecedente = pagePrecedente;
-		pagePrecedente = newPagePrecedente;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					Mm2Package.PAGE_SOUMISSION__PAGE_PRECEDENTE, oldPagePrecedente, newPagePrecedente);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
+	public Page basicGetPagePrecedente() {
+		return pagePrecedente;
 	}
 
 	/**
@@ -239,20 +227,11 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	 */
 	@Override
 	public void setPagePrecedente(Page newPagePrecedente) {
-		if (newPagePrecedente != pagePrecedente) {
-			NotificationChain msgs = null;
-			if (pagePrecedente != null)
-				msgs = ((InternalEObject) pagePrecedente).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_SOUMISSION__PAGE_PRECEDENTE, null, msgs);
-			if (newPagePrecedente != null)
-				msgs = ((InternalEObject) newPagePrecedente).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_SOUMISSION__PAGE_PRECEDENTE, null, msgs);
-			msgs = basicSetPagePrecedente(newPagePrecedente, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		Page oldPagePrecedente = pagePrecedente;
+		pagePrecedente = newPagePrecedente;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_SOUMISSION__PAGE_PRECEDENTE,
-					newPagePrecedente, newPagePrecedente));
+					oldPagePrecedente, pagePrecedente));
 	}
 
 	/**
@@ -475,8 +454,7 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public EList<Question> getQuestion() {
 		if (question == null) {
-			question = new EObjectContainmentEList<Question>(Question.class, this,
-					Mm2Package.PAGE_SOUMISSION__QUESTION);
+			question = new EObjectResolvingEList<Question>(Question.class, this, Mm2Package.PAGE_SOUMISSION__QUESTION);
 		}
 		return question;
 	}
@@ -541,12 +519,6 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case Mm2Package.PAGE_SOUMISSION__PAGE_PRECEDENTE:
-			return basicSetPagePrecedente(null, msgs);
-		case Mm2Package.PAGE_SOUMISSION__PAGE_SUIVANTE:
-			return basicSetPageSuivante(null, msgs);
-		case Mm2Package.PAGE_SOUMISSION__QUESTION:
-			return ((InternalEList<?>) getQuestion()).basicRemove(otherEnd, msgs);
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_RETOUR:
 			return basicSetBoutonRetour(null, msgs);
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_SOUMETTRE:
@@ -564,17 +536,21 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Mm2Package.PAGE_SOUMISSION__PAGE_PRECEDENTE:
-			return getPagePrecedente();
+			if (resolve)
+				return getPagePrecedente();
+			return basicGetPagePrecedente();
 		case Mm2Package.PAGE_SOUMISSION__PAGE_SUIVANTE:
-			return getPageSuivante();
+			if (resolve)
+				return getPageSuivante();
+			return basicGetPageSuivante();
 		case Mm2Package.PAGE_SOUMISSION__TITRE:
 			return getTitre();
-		case Mm2Package.PAGE_SOUMISSION__QUESTION:
-			return getQuestion();
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_RETOUR:
 			return getBoutonRetour();
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_SOUMETTRE:
 			return getBoutonSoumettre();
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			return getQuestion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -597,15 +573,15 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 		case Mm2Package.PAGE_SOUMISSION__TITRE:
 			setTitre((String) newValue);
 			return;
-		case Mm2Package.PAGE_SOUMISSION__QUESTION:
-			getQuestion().clear();
-			getQuestion().addAll((Collection<? extends Question>) newValue);
-			return;
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_RETOUR:
 			setBoutonRetour((BoutonRetour) newValue);
 			return;
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_SOUMETTRE:
 			setBoutonSoumettre((BoutonSoumettre) newValue);
+			return;
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			getQuestion().clear();
+			getQuestion().addAll((Collection<? extends Question>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -628,14 +604,14 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 		case Mm2Package.PAGE_SOUMISSION__TITRE:
 			setTitre(TITRE_EDEFAULT);
 			return;
-		case Mm2Package.PAGE_SOUMISSION__QUESTION:
-			getQuestion().clear();
-			return;
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_RETOUR:
 			setBoutonRetour((BoutonRetour) null);
 			return;
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_SOUMETTRE:
 			setBoutonSoumettre((BoutonSoumettre) null);
+			return;
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			getQuestion().clear();
 			return;
 		}
 		super.eUnset(featureID);
@@ -655,12 +631,12 @@ public class PageSoumissionImpl extends MinimalEObjectImpl.Container implements 
 			return pageSuivante != null;
 		case Mm2Package.PAGE_SOUMISSION__TITRE:
 			return TITRE_EDEFAULT == null ? titre != null : !TITRE_EDEFAULT.equals(titre);
-		case Mm2Package.PAGE_SOUMISSION__QUESTION:
-			return question != null && !question.isEmpty();
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_RETOUR:
 			return boutonRetour != null;
 		case Mm2Package.PAGE_SOUMISSION__BOUTON_SOUMETTRE:
 			return boutonSoumettre != null;
+		case Mm2Package.PAGE_SOUMISSION__QUESTION:
+			return question != null && !question.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

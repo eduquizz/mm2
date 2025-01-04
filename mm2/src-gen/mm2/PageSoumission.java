@@ -15,9 +15,9 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link mm2.PageSoumission#getQuestion <em>Question</em>}</li>
  *   <li>{@link mm2.PageSoumission#getBoutonRetour <em>Bouton Retour</em>}</li>
  *   <li>{@link mm2.PageSoumission#getBoutonSoumettre <em>Bouton Soumettre</em>}</li>
+ *   <li>{@link mm2.PageSoumission#getQuestion <em>Question</em>}</li>
  * </ul>
  *
  * @see mm2.Mm2Package#getPageSoumission()
@@ -64,13 +64,13 @@ public interface PageSoumission extends Navigable, Page {
 	boolean btnSuivant(DiagnosticChain diagnostics, Map<Object, Object> context);
 
 	/**
-	 * Returns the value of the '<em><b>Question</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Question</b></em>' reference list.
 	 * The list contents are of type {@link mm2.Question}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Question</em>' containment reference list.
+	 * @return the value of the '<em>Question</em>' reference list.
 	 * @see mm2.Mm2Package#getPageSoumission_Question()
-	 * @model containment="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<Question> getQuestion();

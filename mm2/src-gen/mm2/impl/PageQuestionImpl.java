@@ -60,7 +60,7 @@ import org.eclipse.ocl.pivot.values.SetValue;
  */
 public class PageQuestionImpl extends MinimalEObjectImpl.Container implements PageQuestion {
 	/**
-	 * The cached value of the '{@link #getPagePrecedente() <em>Page Precedente</em>}' containment reference.
+	 * The cached value of the '{@link #getPagePrecedente() <em>Page Precedente</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPagePrecedente()
@@ -70,7 +70,7 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	protected Page pagePrecedente;
 
 	/**
-	 * The cached value of the '{@link #getPageSuivante() <em>Page Suivante</em>}' containment reference.
+	 * The cached value of the '{@link #getPageSuivante() <em>Page Suivante</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPageSuivante()
@@ -155,6 +155,15 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public Page getPageSuivante() {
+		if (pageSuivante != null && pageSuivante.eIsProxy()) {
+			InternalEObject oldPageSuivante = (InternalEObject) pageSuivante;
+			pageSuivante = (Page) eResolveProxy(oldPageSuivante);
+			if (pageSuivante != oldPageSuivante) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE,
+							oldPageSuivante, pageSuivante));
+			}
+		}
 		return pageSuivante;
 	}
 
@@ -163,18 +172,8 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPageSuivante(Page newPageSuivante, NotificationChain msgs) {
-		Page oldPageSuivante = pageSuivante;
-		pageSuivante = newPageSuivante;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE, oldPageSuivante, newPageSuivante);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
+	public Page basicGetPageSuivante() {
+		return pageSuivante;
 	}
 
 	/**
@@ -184,20 +183,11 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public void setPageSuivante(Page newPageSuivante) {
-		if (newPageSuivante != pageSuivante) {
-			NotificationChain msgs = null;
-			if (pageSuivante != null)
-				msgs = ((InternalEObject) pageSuivante).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE, null, msgs);
-			if (newPageSuivante != null)
-				msgs = ((InternalEObject) newPageSuivante).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE, null, msgs);
-			msgs = basicSetPageSuivante(newPageSuivante, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		Page oldPageSuivante = pageSuivante;
+		pageSuivante = newPageSuivante;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE,
-					newPageSuivante, newPageSuivante));
+					oldPageSuivante, pageSuivante));
 	}
 
 	/**
@@ -207,6 +197,15 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public Page getPagePrecedente() {
+		if (pagePrecedente != null && pagePrecedente.eIsProxy()) {
+			InternalEObject oldPagePrecedente = (InternalEObject) pagePrecedente;
+			pagePrecedente = (Page) eResolveProxy(oldPagePrecedente);
+			if (pagePrecedente != oldPagePrecedente) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE,
+							oldPagePrecedente, pagePrecedente));
+			}
+		}
 		return pagePrecedente;
 	}
 
@@ -215,18 +214,8 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPagePrecedente(Page newPagePrecedente, NotificationChain msgs) {
-		Page oldPagePrecedente = pagePrecedente;
-		pagePrecedente = newPagePrecedente;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE, oldPagePrecedente, newPagePrecedente);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
+	public Page basicGetPagePrecedente() {
+		return pagePrecedente;
 	}
 
 	/**
@@ -236,20 +225,11 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	 */
 	@Override
 	public void setPagePrecedente(Page newPagePrecedente) {
-		if (newPagePrecedente != pagePrecedente) {
-			NotificationChain msgs = null;
-			if (pagePrecedente != null)
-				msgs = ((InternalEObject) pagePrecedente).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE, null, msgs);
-			if (newPagePrecedente != null)
-				msgs = ((InternalEObject) newPagePrecedente).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE, null, msgs);
-			msgs = basicSetPagePrecedente(newPagePrecedente, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
+		Page oldPagePrecedente = pagePrecedente;
+		pagePrecedente = newPagePrecedente;
+		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE,
-					newPagePrecedente, newPagePrecedente));
+					oldPagePrecedente, pagePrecedente));
 	}
 
 	/**
@@ -492,10 +472,6 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE:
-			return basicSetPagePrecedente(null, msgs);
-		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
-			return basicSetPageSuivante(null, msgs);
 		case Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT:
 			return basicSetBoutonSuivant(null, msgs);
 		case Mm2Package.PAGE_QUESTION__BOUTON_RETOUR:
@@ -619,9 +595,13 @@ public class PageQuestionImpl extends MinimalEObjectImpl.Container implements Pa
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Mm2Package.PAGE_QUESTION__PAGE_PRECEDENTE:
-			return getPagePrecedente();
+			if (resolve)
+				return getPagePrecedente();
+			return basicGetPagePrecedente();
 		case Mm2Package.PAGE_QUESTION__PAGE_SUIVANTE:
-			return getPageSuivante();
+			if (resolve)
+				return getPageSuivante();
+			return basicGetPageSuivante();
 		case Mm2Package.PAGE_QUESTION__TITRE:
 			return getTitre();
 		case Mm2Package.PAGE_QUESTION__BOUTON_SUIVANT:

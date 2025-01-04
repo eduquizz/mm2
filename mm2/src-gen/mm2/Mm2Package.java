@@ -234,7 +234,7 @@ public interface Mm2Package extends EPackage {
 	int NAVIGABLE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Page Precedente</b></em>' containment reference.
+	 * The feature id for the '<em><b>Page Precedente</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -243,7 +243,7 @@ public interface Mm2Package extends EPackage {
 	int NAVIGABLE__PAGE_PRECEDENTE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Page Suivante</b></em>' containment reference.
+	 * The feature id for the '<em><b>Page Suivante</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -280,7 +280,7 @@ public interface Mm2Package extends EPackage {
 	int PAGE_QUESTION = 4;
 
 	/**
-	 * The feature id for the '<em><b>Page Precedente</b></em>' containment reference.
+	 * The feature id for the '<em><b>Page Precedente</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -289,7 +289,7 @@ public interface Mm2Package extends EPackage {
 	int PAGE_QUESTION__PAGE_PRECEDENTE = NAVIGABLE__PAGE_PRECEDENTE;
 
 	/**
-	 * The feature id for the '<em><b>Page Suivante</b></em>' containment reference.
+	 * The feature id for the '<em><b>Page Suivante</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -380,7 +380,7 @@ public interface Mm2Package extends EPackage {
 	int PAGE_SOUMISSION = 5;
 
 	/**
-	 * The feature id for the '<em><b>Page Precedente</b></em>' containment reference.
+	 * The feature id for the '<em><b>Page Precedente</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -389,7 +389,7 @@ public interface Mm2Package extends EPackage {
 	int PAGE_SOUMISSION__PAGE_PRECEDENTE = NAVIGABLE__PAGE_PRECEDENTE;
 
 	/**
-	 * The feature id for the '<em><b>Page Suivante</b></em>' containment reference.
+	 * The feature id for the '<em><b>Page Suivante</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -407,22 +407,13 @@ public interface Mm2Package extends EPackage {
 	int PAGE_SOUMISSION__TITRE = NAVIGABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Question</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAGE_SOUMISSION__QUESTION = NAVIGABLE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Bouton Retour</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_SOUMISSION__BOUTON_RETOUR = NAVIGABLE_FEATURE_COUNT + 2;
+	int PAGE_SOUMISSION__BOUTON_RETOUR = NAVIGABLE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Bouton Soumettre</b></em>' containment reference.
@@ -431,7 +422,16 @@ public interface Mm2Package extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_SOUMISSION__BOUTON_SOUMETTRE = NAVIGABLE_FEATURE_COUNT + 3;
+	int PAGE_SOUMISSION__BOUTON_SOUMETTRE = NAVIGABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Question</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_SOUMISSION__QUESTION = NAVIGABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Page Soumission</em>' class.
@@ -899,10 +899,10 @@ public interface Mm2Package extends EPackage {
 	EClass getNavigable();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link mm2.Navigable#getPageSuivante <em>Page Suivante</em>}'.
+	 * Returns the meta object for the reference '{@link mm2.Navigable#getPageSuivante <em>Page Suivante</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Page Suivante</em>'.
+	 * @return the meta object for the reference '<em>Page Suivante</em>'.
 	 * @see mm2.Navigable#getPageSuivante()
 	 * @see #getNavigable()
 	 * @generated
@@ -910,10 +910,10 @@ public interface Mm2Package extends EPackage {
 	EReference getNavigable_PageSuivante();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link mm2.Navigable#getPagePrecedente <em>Page Precedente</em>}'.
+	 * Returns the meta object for the reference '{@link mm2.Navigable#getPagePrecedente <em>Page Precedente</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Page Precedente</em>'.
+	 * @return the meta object for the reference '<em>Page Precedente</em>'.
 	 * @see mm2.Navigable#getPagePrecedente()
 	 * @see #getNavigable()
 	 * @generated
@@ -1025,10 +1025,10 @@ public interface Mm2Package extends EPackage {
 	EOperation getPageSoumission__BtnSuivant__DiagnosticChain_Map();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link mm2.PageSoumission#getQuestion <em>Question</em>}'.
+	 * Returns the meta object for the reference list '{@link mm2.PageSoumission#getQuestion <em>Question</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Question</em>'.
+	 * @return the meta object for the reference list '<em>Question</em>'.
 	 * @see mm2.PageSoumission#getQuestion()
 	 * @see #getPageSoumission()
 	 * @generated
@@ -1365,7 +1365,7 @@ public interface Mm2Package extends EPackage {
 		EClass NAVIGABLE = eINSTANCE.getNavigable();
 
 		/**
-		 * The meta object literal for the '<em><b>Page Suivante</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Page Suivante</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1373,7 +1373,7 @@ public interface Mm2Package extends EPackage {
 		EReference NAVIGABLE__PAGE_SUIVANTE = eINSTANCE.getNavigable_PageSuivante();
 
 		/**
-		 * The meta object literal for the '<em><b>Page Precedente</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Page Precedente</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1469,7 +1469,7 @@ public interface Mm2Package extends EPackage {
 				.getPageSoumission__BtnSuivant__DiagnosticChain_Map();
 
 		/**
-		 * The meta object literal for the '<em><b>Question</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Question</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
