@@ -13,7 +13,7 @@
     <semanticResources>../../plugin.properties</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_j6-fgMUDEe-ZMa-cjKvK0Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j8IWEMUDEe-ZMa-cjKvK0Q" name="mm2" repPath="#_j7xJsMUDEe-ZMa-cjKvK0Q" changeId="1736006811672">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_j8IWEMUDEe-ZMa-cjKvK0Q" name="mm2" repPath="#_j7xJsMUDEe-ZMa-cjKvK0Q" changeId="1736084631462">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="mm2.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -29,9 +29,9 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_J_qsz8UGEe-Gt540-YHsjw" fontColor="2697711" fontName="Ubuntu" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_J_qs0MUGEe-Gt540-YHsjw"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_NUhIr8UGEe-Gt540-YHsjw" type="3010" element="_NUdeQMUGEe-Gt540-YHsjw">
-              <styles xmi:type="notation:FontStyle" xmi:id="_NUhIsMUGEe-Gt540-YHsjw" fontColor="2697711" fontName="Ubuntu" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_NUhIscUGEe-Gt540-YHsjw"/>
+            <children xmi:type="notation:Node" xmi:id="_CbrwAMtrEe-gZa5sxZ3-og" type="3010" element="_CB9BYMtrEe-gZa5sxZ3-og">
+              <styles xmi:type="notation:FontStyle" xmi:id="_CbrwActrEe-gZa5sxZ3-og" fontColor="2697711" fontName=".AppleSystemUIFont" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_CbrwAstrEe-gZa5sxZ3-og"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="__Rrx8cUDEe-Gt540-YHsjw"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="__Rrx8sUDEe-Gt540-YHsjw"/>
@@ -524,7 +524,7 @@
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__RTXcMUDEe-Gt540-YHsjw" name="Questionnaire" tooltipText="" outgoingEdges="_M07fHMUFEe-Gt540-YHsjw" width="12" height="10">
       <target xmi:type="ecore:EClass" href="mm2.ecore#//Questionnaire"/>
       <semanticElements xmi:type="ecore:EClass" href="mm2.ecore#//Questionnaire"/>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_sObhUckSEe-udoGr5xpCDw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_FmeRActrEe-gZa5sxZ3-og" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="Liquid" foregroundColor="255,252,216">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
@@ -536,10 +536,10 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_NUdeQMUGEe-Gt540-YHsjw" name="retourAutorise : EBoolean = true" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_CB9BYMtrEe-gZa5sxZ3-og" name="retourAutorise : EBoolean = false" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="mm2.ecore#//Questionnaire/retourAutorise"/>
         <semanticElements xmi:type="ecore:EAttribute" href="mm2.ecore#//Questionnaire/retourAutorise"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_6N_YEsq1Ee-8cYTuA9vd9w" labelAlignment="LEFT" description="_sUXJEcqlEe-MrJKRfsctlA">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_GRSvostrEe-gZa5sxZ3-og" labelAlignment="LEFT" description="_sUXJEcqlEe-MrJKRfsctlA">
           <labelFormat>bold</labelFormat>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
